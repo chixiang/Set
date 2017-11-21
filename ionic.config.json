@@ -2,5 +2,7 @@
   "name": "set",
   "app_id": "3f05e347",
   "type": "ionic-angular",
-  "integrations": {}
+  "integrations": {
+    "cordova": {}
+  }
 }

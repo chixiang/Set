@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, ModalController } from 'ionic-angular';
 
 import { AddTemplatePage } from '../add-template/add-template';
+import { TemplateDetailPage } from '../template-detail/template-detail';
 import { Data } from '../../providers/data/data';
 
 /**
@@ -51,7 +52,13 @@ export class TemplatePage {
   }
 
   viewTemplate(template) {
+    this.navCtrl.push(TemplateDetailPage, {
+      template: template
+    });
+  }
 
+  deleteTemplate(template) {
+    //TODO
   }
 
 }

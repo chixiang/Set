@@ -20,7 +20,7 @@ export class AddTemplatePage {
   public description: string;
   public items = [];
 
-  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams,  public view: ViewController) {
+  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams, public view: ViewController) {
   }
 
   ionViewDidLoad() {
@@ -42,7 +42,6 @@ export class AddTemplatePage {
   }
 
   viewItem(item) {
-
   }
 
   saveItem(item) {

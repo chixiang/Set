@@ -6,11 +6,14 @@ import { MyApp } from './app.component';
 import { SetPage } from '../pages/set/set';
 import { TemplatePage } from '../pages/template/template';
 import { AddTemplatePage } from '../pages/add-template/add-template';
+import { TemplateDetailPage } from '../pages/template-detail/template-detail';
 import { AddItemPage } from '../pages/add-item/add-item';
 import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+
+import { IonicStorageModule } from '@ionic/storage';
 import { Data } from '../providers/data/data';
 
 @NgModule({
@@ -20,11 +23,13 @@ import { Data } from '../providers/data/data';
     TemplatePage,
     TabsPage,
     AddTemplatePage,
+    TemplateDetailPage,
     AddItemPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -33,6 +38,7 @@ import { Data } from '../providers/data/data';
     TemplatePage,
     TabsPage,
     AddTemplatePage,
+    TemplateDetailPage,
     AddItemPage
   ],
   providers: [

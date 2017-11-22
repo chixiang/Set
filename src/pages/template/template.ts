@@ -52,9 +52,18 @@ export class TemplatePage {
   }
 
   viewTemplate(template) {
-    this.navCtrl.push(TemplateDetailPage, {
+    let addModal = this.modalCtrl.create(TemplateDetailPage, {
       template: template
     });
+    // this.navCtrl.push(TemplateDetailPage, {
+    //   template: template
+    // });
+    addModal.onDidDismiss((template) => {
+      if (template) {
+        this.saveTemplate(template);
+      }
+    });
+    addModal.present();
   }
 
   deleteTemplate(template) {

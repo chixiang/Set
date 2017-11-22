@@ -29,16 +29,12 @@ export class AddTemplatePage {
 
   addItem() {
     let addModal = this.modalCtrl.create(AddItemPage);
-    
-        addModal.onDidDismiss((item) => {
-    
-          if (item) {
-            this.saveItem(item);
-          }
-    
-        });
-    
-        addModal.present();
+    addModal.onDidDismiss((item) => {
+      if (item) {
+        this.saveItem(item);
+      }
+    });
+    addModal.present();
   }
 
   viewItem(item) {

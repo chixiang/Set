@@ -28,7 +28,7 @@ export class AddItemPage {
 
     let newItem = {
       title: this.title,
-      description: this.type
+      type: this.type
     };
 
     this.view.dismiss(newItem);

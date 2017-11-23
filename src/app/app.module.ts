@@ -8,6 +8,7 @@ import { TemplatePage } from '../pages/template/template';
 import { AddTemplatePage } from '../pages/add-template/add-template';
 import { TemplateDetailPage } from '../pages/template-detail/template-detail';
 import { AddItemPage } from '../pages/add-item/add-item';
+import { ItemDetailPage } from '../pages/item-detail/item-detail';
 import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -24,7 +25,8 @@ import { TemplateData } from '../providers/data/data';
     TabsPage,
     AddTemplatePage,
     TemplateDetailPage,
-    AddItemPage
+    AddItemPage,
+    ItemDetailPage
   ],
   imports: [
     BrowserModule,
@@ -39,7 +41,8 @@ import { TemplateData } from '../providers/data/data';
     TabsPage,
     AddTemplatePage,
     TemplateDetailPage,
-    AddItemPage
+    AddItemPage,
+    ItemDetailPage
   ],
   providers: [
     StatusBar,

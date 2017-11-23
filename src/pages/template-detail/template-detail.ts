@@ -3,6 +3,7 @@ import { NavController, NavParams, ViewController } from 'ionic-angular';
 import { ModalController } from 'ionic-angular/components/modal/modal-controller';
 
 import { AddItemPage } from '../add-item/add-item';
+import { ItemDetailPage } from '../item-detail/item-detail';
 
 /**
  * Generated class for the TemplateDetailPage page.
@@ -46,18 +47,25 @@ export class TemplateDetailPage {
   }
 
   viewItem(item) {
+    let addModal = this.modalCtrl.create(ItemDetailPage, {
+      item: item
+    });
+    addModal.onDidDismiss((item) => {
+      if (item) {
+        this.saveItem(item);
+      }
+    });
+    addModal.present();
   }
 
   saveItem(item) {
-    this.items.push(item);
+    //this.items.push(item);
   }
 
   saveTemplate() {
-    this.template = {
-      title: this.title,
-      description: this.description,
-      items: this.items
-    };
+    this.template.title = this.title;
+    this.template.description = this.description;
+    this.template.items = this.items;
 
     this.view.dismiss(this.template);
   }

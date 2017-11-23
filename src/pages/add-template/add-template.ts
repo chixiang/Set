@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, ModalController, ViewController, NavParams } from 'ionic-angular';
 
 import { AddItemPage } from '../add-item/add-item';
+import { ItemDetailPage } from '../item-detail/item-detail';
 
 /**
  * Generated class for the AddTemplatePage page.
@@ -38,6 +39,15 @@ export class AddTemplatePage {
   }
 
   viewItem(item) {
+    let addModal = this.modalCtrl.create(ItemDetailPage, {
+      item: item
+    });
+    addModal.onDidDismiss((item) => {
+      if (item) {
+        //this.saveItem(item);
+      }
+    });
+    addModal.present();
   }
 
   saveItem(item) {

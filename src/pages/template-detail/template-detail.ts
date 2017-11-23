@@ -52,14 +52,14 @@ export class TemplateDetailPage {
     });
     addModal.onDidDismiss((item) => {
       if (item) {
-        this.saveItem(item);
+        //this.saveItem(item);
       }
     });
     addModal.present();
   }
 
   saveItem(item) {
-    //this.items.push(item);
+    this.items.push(item);
   }
 
   saveTemplate() {

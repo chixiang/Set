@@ -11,11 +11,15 @@ import { AddItemPage } from '../pages/add-item/add-item';
 import { ItemDetailPage } from '../pages/item-detail/item-detail';
 import { TabsPage } from '../pages/tabs/tabs';
 
+import { AddSetPage } from '../pages/add-set/add-set';
+import { SetDetailPage } from '../pages/set-detail/set-detail';
+
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { IonicStorageModule } from '@ionic/storage';
 import { TemplateData } from '../providers/data/data';
+import { SetData } from '../providers/set-data/set-data';
 
 @NgModule({
   declarations: [
@@ -26,7 +30,9 @@ import { TemplateData } from '../providers/data/data';
     AddTemplatePage,
     TemplateDetailPage,
     AddItemPage,
-    ItemDetailPage
+    ItemDetailPage,
+    AddSetPage,
+    SetDetailPage
   ],
   imports: [
     BrowserModule,
@@ -42,13 +48,16 @@ import { TemplateData } from '../providers/data/data';
     AddTemplatePage,
     TemplateDetailPage,
     AddItemPage,
-    ItemDetailPage
+    ItemDetailPage,
+    AddSetPage,
+    SetDetailPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    TemplateData
+    TemplateData,
+    SetData
   ]
 })
 export class AppModule {}

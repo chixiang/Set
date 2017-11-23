@@ -7,7 +7,7 @@
 <ion-header>
   <ion-toolbar color="secondary">
     <ion-title>
-      Add Item
+      Item Detail
     </ion-title>
       <ion-buttons end>
         <button ion-button icon-only (click)="close()"><ion-icon name="close"></ion-icon></button>
@@ -24,8 +24,13 @@
     </ion-item>
  
     <ion-item>
-      <ion-label floating>Type</ion-label>
-      <ion-input type="text" [(ngModel)]="type"></ion-input>
+      <ion-label>Type</ion-label>
+      <ion-select [(ngModel)]="type" interface="popover">
+        <ion-option value="string">文字</ion-option>
+        <ion-option value="number">数字</ion-option>
+        <ion-option value="select">列表</ion-option>
+        <ion-option value="date">日期</ion-option>
+      </ion-select>
     </ion-item>
  
   </ion-list>

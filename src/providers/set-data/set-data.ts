@@ -47,17 +47,17 @@ export class SetData {
     });
   }
 
-  createTemplate(set) {
+  createSet(set) {
     this.db.post(set);
   }
 
-  updateTemplate(set) {
+  updateSet(set) {
     this.db.put(set).catch((err) => {
       console.log(err);
     });
   }
 
-  deleteTemplate(set) {
+  deleteSet(set) {
     this.db.remove(set).catch((err) => {
       console.log(err);
     });

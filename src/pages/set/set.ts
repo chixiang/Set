@@ -33,39 +33,39 @@ export class SetPage {
     console.log('ionViewDidLoad SetPage');
   }
 
-  addTemplate() {
+  addSet() {
     let addModal = this.modalCtrl.create(AddSetPage);
     addModal.onDidDismiss((set) => {
       if (set) {
-        this.createTemplate(set);
+        this.createSet(set);
       }
     });
 
     addModal.present();
   }
 
-  viewTemplate(set) {
+  viewSet(set) {
     let addModal = this.modalCtrl.create(SetDetailPage, {
       set: set
     });
     addModal.onDidDismiss((set) => {
       if (set) {
-        this.saveTemplate(set);
+        this.saveSet(set);
       }
     });
     addModal.present();
   }
 
-  createTemplate(set) {
-    this.dataService.createTemplate(set);
+  createSet(set) {
+    this.dataService.createSet(set);
   }
 
-  saveTemplate(set) {
-    this.dataService.updateTemplate(set);
+  saveSet(set) {
+    this.dataService.updateSet(set);
   }
 
-  deleteTemplate(set) {
-    this.dataService.deleteTemplate(set);
+  deleteSet(set) {
+    this.dataService.deleteSet(set);
   }
 
 }

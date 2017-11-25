@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { ViewController } from 'ionic-angular/navigation/view-controller';
 
 /**
  * Generated class for the SetDetailPage page.
@@ -14,11 +15,28 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class SetDetailPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  set;
+  template;
+  rows = [];
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public view: ViewController) {
+    if (this.navParams.get('set')) {
+      this.set = this.navParams.get('set');
+      this.template = this.set.tempalte;
+      this.rows = this.set.rows;
+    }
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad SetDetailPage');
+    // if (this.navParams.get('set')) {
+    //   this.set = this.navParams.get('set');
+    //   this.template = this.set.tempalte;
+    //   this.rows = this.set.rows;
+    // }
   }
+
+  // close() {
+  //   this.view.dismiss();
+  // }
 
 }

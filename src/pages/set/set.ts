@@ -45,15 +45,18 @@ export class SetPage {
   }
 
   viewSet(set) {
-    let addModal = this.modalCtrl.create(SetDetailPage, {
+    // let addModal = this.modalCtrl.create(SetDetailPage, {
+    //   set: set
+    // });
+    this.navCtrl.push(SetDetailPage, {
       set: set
     });
-    addModal.onDidDismiss((set) => {
-      if (set) {
-        this.saveSet(set);
-      }
-    });
-    addModal.present();
+    // addModal.onDidDismiss((set) => {
+    //   if (set) {
+    //     this.saveSet(set);
+    //   }
+    // });
+    // addModal.present();
   }
 
   createSet(set) {

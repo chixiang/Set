@@ -35,25 +35,30 @@
   </ion-list> -->
 
   <ion-list>
-    <ion-item *ngFor="let item of items">
-      <!-- <ion-label *ngIf="item.type == string" floating>Title</ion-label> -->
-      <!-- <p>{{item.type}}</p> -->
-      <!-- <div [ngSwitch]="item.type">
-        <div *ngSwitchCase="'string'">
-            <ion-input type="text" value=""></ion-input>
-        </div>
-        <div *ngSwitchCase="'number'">
-          Number
-        </div>
-        <div *ngSwitchDefault>
-
-        </div>
-      </div> -->
-      <div [ngSwitch]="item.type">
-        <!-- <ion-label *ngSwitchCase="'string'" fixed>{{item.title}}</ion-label> -->
-        <!-- <p *ngSwitchCase="'string'" ><ion-label floating>{{item.title}}</ion-label></p> -->
-        <div *ngSwitchCase="'string'" ><ion-label floating>{{item.title}}</ion-label></div>
-      </div>
+    <ion-item *ngFor="let item of items" [ngSwitch]="item.type">
+      <ion-label>{{item.title}}</ion-label>
+      <!-- String -->
+      <ion-input *ngSwitchCase="'string'" type="text" [(ngModel)]="item.value"></ion-input>
+      <!-- Select -->
+      <ion-select *ngSwitchCase="'select'" [(ngModel)]="item.value" interface="popover">
+          <ion-option value="nes">NES</ion-option>
+          <ion-option value="n64">Nintendo64</ion-option>
+          <ion-option value="ps">PlayStation</ion-option>
+          <ion-option value="genesis">Sega Genesis</ion-option>
+          <ion-option value="saturn">Sega Saturn</ion-option>
+          <ion-option value="snes">SNES</ion-option>
+        </ion-select>
+      <!-- Password -->
+      <ion-input *ngSwitchCase="'password'" type="password" [(ngModel)]="item.value"></ion-input>
+      <!-- Toggle -->
+      <ion-toggle *ngSwitchCase="'toggle'" checked="false" [(ngModel)]="item.value"></ion-toggle>
+      <!-- Range -->
+      <ion-range *ngSwitchCase="'range'" [(ngModel)]="item.value">
+        <ion-icon range-left small name="sunny"></ion-icon>
+        <ion-icon range-right name="sunny"></ion-icon>
+      </ion-range>
+      <!-- Default -->
+      <ion-input *ngSwitchDefault type="text" [(ngModel)]="item.value"></ion-input>
     </ion-item>
   </ion-list>
 

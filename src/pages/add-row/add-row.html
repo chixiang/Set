@@ -1,0 +1,62 @@
+<!--
+  Generated template for the AddRowPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-buttons start>
+      <button ion-button icon-only (click)="close()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>
+      Add Row
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="saveRow()">
+        <ion-icon name="save"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- <ion-list>
+    <ion-item>
+      <ion-label floating>Title</ion-label>
+      <ion-input type="text" [(ngModel)]="title"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Description</ion-label>
+      <ion-input type="text" [(ngModel)]="description"></ion-input>
+    </ion-item>
+  </ion-list> -->
+
+  <ion-list>
+    <ion-item *ngFor="let item of items">
+      <!-- <ion-label *ngIf="item.type == string" floating>Title</ion-label> -->
+      <!-- <p>{{item.type}}</p> -->
+      <!-- <div [ngSwitch]="item.type">
+        <div *ngSwitchCase="'string'">
+            <ion-input type="text" value=""></ion-input>
+        </div>
+        <div *ngSwitchCase="'number'">
+          Number
+        </div>
+        <div *ngSwitchDefault>
+
+        </div>
+      </div> -->
+      <div [ngSwitch]="item.type">
+        <!-- <ion-label *ngSwitchCase="'string'" fixed>{{item.title}}</ion-label> -->
+        <!-- <p *ngSwitchCase="'string'" ><ion-label floating>{{item.title}}</ion-label></p> -->
+        <div *ngSwitchCase="'string'" ><ion-label floating>{{item.title}}</ion-label></div>
+      </div>
+    </ion-item>
+  </ion-list>
+
+  <button full ion-button color="secondary" (click)="saveTemplate()">Save</button>
+
+</ion-content>

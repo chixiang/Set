@@ -13,7 +13,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 
 import { AddSetPage } from '../pages/add-set/add-set';
 import { SetDetailPage } from '../pages/set-detail/set-detail';
-
+import { AddRowPage } from '../pages/add-row/add-row';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -32,7 +32,8 @@ import { SetData } from '../providers/set-data/set-data';
     AddItemPage,
     ItemDetailPage,
     AddSetPage,
-    SetDetailPage
+    SetDetailPage,
+    AddRowPage
   ],
   imports: [
     BrowserModule,
@@ -50,7 +51,8 @@ import { SetData } from '../providers/set-data/set-data';
     AddItemPage,
     ItemDetailPage,
     AddSetPage,
-    SetDetailPage
+    SetDetailPage,
+    AddRowPage
   ],
   providers: [
     StatusBar,

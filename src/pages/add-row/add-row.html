@@ -47,7 +47,7 @@
       <ion-input *ngSwitchCase="'url'" type="url" [(ngModel)]="item.value"></ion-input>
       <!-- Select -->
       <ion-select *ngSwitchCase="'select'" [(ngModel)]="item.value" interface="popover">
-        <ion-option *ngFor="let selectItem of item.selectItems" value="selectItem.value">{{selectItem.value}}</ion-option>
+        <ion-option *ngFor="let selectItem of item.selectItems">{{selectItem.value}}</ion-option>
       </ion-select>
       <!-- Date -->
       <ion-datetime *ngSwitchCase="'date'" displayFormat="YYYY MMM DD" [(ngModel)]="item.value"></ion-datetime>

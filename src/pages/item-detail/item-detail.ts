@@ -51,7 +51,9 @@ export class ItemDetailPage {
   saveItem() {
     this.item.title = this.title;
     this.item.type = this.type;
-    this.item.selectItems = this.selectItems;
+
+    this.selectItems.pop();
+    this.item.items = this.selectItems;
 
     this.view.dismiss(this.item);
   }

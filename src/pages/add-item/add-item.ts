@@ -46,7 +46,7 @@ export class AddItemPage {
   }
 
   saveItem() {
-
+    this.selectItems.pop();
     let newItem = {
       title: this.title,
       type: this.type,

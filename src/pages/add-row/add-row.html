@@ -39,15 +39,20 @@
       <ion-label>{{item.title}}</ion-label>
       <!-- String -->
       <ion-input *ngSwitchCase="'string'" type="text" [(ngModel)]="item.value"></ion-input>
+      <!-- Number -->
+      <ion-input *ngSwitchCase="'number'" type="number" [(ngModel)]="item.value"></ion-input>
+      <!-- Email -->
+      <ion-input *ngSwitchCase="'email'" type="email" [(ngModel)]="item.value"></ion-input>
+      <!-- Url -->
+      <ion-input *ngSwitchCase="'url'" type="url" [(ngModel)]="item.value"></ion-input>
       <!-- Select -->
       <ion-select *ngSwitchCase="'select'" [(ngModel)]="item.value" interface="popover">
-          <ion-option value="nes">NES</ion-option>
-          <ion-option value="n64">Nintendo64</ion-option>
-          <ion-option value="ps">PlayStation</ion-option>
-          <ion-option value="genesis">Sega Genesis</ion-option>
-          <ion-option value="saturn">Sega Saturn</ion-option>
-          <ion-option value="snes">SNES</ion-option>
-        </ion-select>
+        <ion-option *ngFor="let selectItem of item.selectItems" value="selectItem.value">{{selectItem.value}}</ion-option>
+      </ion-select>
+      <!-- Date -->
+      <ion-datetime *ngSwitchCase="'date'" displayFormat="YYYY MMM DD" [(ngModel)]="item.value"></ion-datetime>
+      <!-- Time -->
+      <ion-datetime *ngSwitchCase="'time'" displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="item.value"></ion-datetime>
       <!-- Password -->
       <ion-input *ngSwitchCase="'password'" type="password" [(ngModel)]="item.value"></ion-input>
       <!-- Toggle -->
@@ -62,6 +67,6 @@
     </ion-item>
   </ion-list>
 
-  <button full ion-button color="secondary" (click)="saveTemplate()">Save</button>
+  <button full ion-button color="secondary" (click)="saveRow()">Save</button>
 
 </ion-content>

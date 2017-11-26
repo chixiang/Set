@@ -5,6 +5,8 @@ import { ModalController } from 'ionic-angular/components/modal/modal-controller
 
 import { AddRowPage } from '../add-row/add-row';
 
+import { SetData } from '../../providers/set-data/set-data';
+
 /**
  * Generated class for the SetDetailPage page.
  *
@@ -22,7 +24,7 @@ export class SetDetailPage {
   template;
   rows = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public view: ViewController, public modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public view: ViewController, public modalCtrl: ModalController, public dataService: SetData) {
     if (this.navParams.get('set')) {
       this.set = this.navParams.get('set');
       this.template = this.set.template;
@@ -53,7 +55,8 @@ export class SetDetailPage {
   }
 
   addRowData(row) {
-
+    this.set.rows.push(row);
+    this.dataService.updateSet(this.set);
   }
 
   // close() {

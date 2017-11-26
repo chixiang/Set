@@ -62,6 +62,11 @@ export class TemplateDetailPage {
     this.items.push(item);
   }
 
+  deleteItem(item) {
+    let index = this.items.indexOf(item);
+    this.items = this.items.slice(0, index).concat(this.items.slice(index + 1, this.items.length));
+  }
+
   saveTemplate() {
     this.template.title = this.title;
     this.template.description = this.description;

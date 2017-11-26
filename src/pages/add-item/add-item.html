@@ -9,20 +9,22 @@
     <ion-title>
       Add Item
     </ion-title>
-      <ion-buttons end>
-        <button ion-button icon-only (click)="close()"><ion-icon name="close"></ion-icon></button>
-      </ion-buttons>
-    </ion-toolbar>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="close()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
- 
+
 <ion-content>
   <ion-list>
- 
+
     <ion-item>
       <ion-label floating>Title</ion-label>
       <ion-input type="text" [(ngModel)]="title"></ion-input>
     </ion-item>
- 
+
     <!-- <ion-item>
       <ion-label floating>Type</ion-label>
       <ion-input type="text" [(ngModel)]="type"></ion-input>
@@ -35,11 +37,23 @@
         <ion-option value="number">数字</ion-option>
         <ion-option value="select">列表</ion-option>
         <ion-option value="date">日期</ion-option>
+        <ion-option value="time">时间</ion-option>
       </ion-select>
+
     </ion-item>
- 
+
   </ion-list>
- 
+
+  <ion-list *ngIf="type == 'select'">
+    <ion-list-header>
+      Select items
+    </ion-list-header>
+    <ion-item *ngFor="let item of selectItems">
+      <ion-label>Value</ion-label>
+      <ion-input type="text" [(ngModel)]="item.value" (blur)="addNullSelectItem()"></ion-input>
+    </ion-item>
+  </ion-list>
+
   <button full ion-button color="secondary" (click)="saveItem()">Save</button>
- 
+
 </ion-content>

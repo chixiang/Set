@@ -50,7 +50,8 @@ export class AddSetPage {
       title: this.title,
       description: this.description,
       type: this.type,
-      template: this.template
+      template: this.template,
+      rows: []
     };
 
     this.view.dismiss(newSet);

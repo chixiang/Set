@@ -30,10 +30,21 @@
         <ion-option value="number">数字</ion-option>
         <ion-option value="select">列表</ion-option>
         <ion-option value="date">日期</ion-option>
+        <ion-option value="time">时间</ion-option>
       </ion-select>
     </ion-item>
  
   </ion-list>
+
+  <ion-list *ngIf="type == 'select'">
+      <ion-list-header>
+        Select items
+      </ion-list-header>
+      <ion-item *ngFor="let item of selectItems">
+        <ion-label>Value</ion-label>
+        <ion-input type="text" [(ngModel)]="item.value" (blur)="addNullSelectItem()"></ion-input>
+      </ion-item>
+    </ion-list>
  
   <button full ion-button color="secondary" (click)="saveItem()">Save</button>
  

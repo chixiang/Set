@@ -18,7 +18,7 @@ export class TemplateData {
 
   constructor() {
     this.db = new PouchDB('template');
-    this.remote = 'http://localhost:5984/template';
+    this.remote = 'http://45.76.243.236:5984/template';
     let options = {
       live: true,
       retry: true,

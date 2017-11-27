@@ -21,19 +21,20 @@ import { SetData } from '../../providers/set-data/set-data';
 export class SetDetailPage {
 
   set;
+  title;
   template;
   rows = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public view: ViewController, public modalCtrl: ModalController, public dataService: SetData) {
     if (this.navParams.get('set')) {
       this.set = this.navParams.get('set');
+      this.title = this.set.title;
       this.template = this.set.template;
       this.rows = this.set.rows;
     }
   }
 
   ionViewDidLoad() {
-
   }
 
   addRow() {
@@ -63,8 +64,20 @@ export class SetDetailPage {
         this.set = sets[0];
       }
     });
-    this.template = this.set.template;
     this.rows = this.set.rows;
+    // this.dataService.getSets().then((sets) => {
+    //   if (sets) {
+    //     for(var i = 0; i < sets.length; i++) {
+    //       if (this.set._id == sets[i]._id) {
+    //         this.set = sets[i];
+    //         break;
+    //       } else {
+    //         continue;
+    //       }
+    //     }
+    //   }
+    // });
+    // this.rows = this.set.rows;
   }
 
   // close() {

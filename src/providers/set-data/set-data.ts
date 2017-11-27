@@ -34,6 +34,7 @@ export class SetData {
         include_docs: true
       }).then((result) => {
         this.data = [];
+        console.log(result);
         let docs = result.rows.map((row) => {
           this.data.push(row.doc);
         });
@@ -48,14 +49,14 @@ export class SetData {
   }
 
   getSet(id) {
+
     return new Promise(resolve => {
       this.db.get(id, {
         include_docs: true
       }).then((result) => {
         this.data = [];
-        let docs = result.rows.map((row) => {
-          this.data.push(row.doc);
-        });
+        console.log(result);
+        this.data.push(result);
         resolve(this.data);
         this.db.changes({ live: true, since: 'now', include_docs: true }).on('change', (change) => {
           this.handleChange(change);

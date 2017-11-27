@@ -33,11 +33,7 @@ export class SetDetailPage {
   }
 
   ionViewDidLoad() {
-    // if (this.navParams.get('set')) {
-    //   this.set = this.navParams.get('set');
-    //   this.template = this.set.tempalte;
-    //   this.rows = this.set.rows;
-    // }
+
   }
 
   addRow() {
@@ -47,16 +43,28 @@ export class SetDetailPage {
     });
     addModal.onDidDismiss((row) => {
       if (row) {
-        this.addRowData(row);
+        this.set.rows.push(row);
+        this.updateRowData();
+        // 因为上一步更新了set，id和rev发生变化，需要重新获取set。否则不能继续增加或修改row
+        this.refreshSetData();
       }
     });
 
     addModal.present();
   }
 
-  addRowData(row) {
-    this.set.rows.push(row);
+  updateRowData() {
     this.dataService.updateSet(this.set);
+  }
+
+  refreshSetData() {
+    this.dataService.getSet(this.set._id).then((sets) => {
+      if (sets) {
+        this.set = sets[0];
+      }
+    });
+    this.template = this.set.template;
+    this.rows = this.set.rows;
   }
 
   // close() {

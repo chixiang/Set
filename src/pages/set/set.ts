@@ -22,7 +22,7 @@ export class SetPage {
   public sets = [];
 
   constructor(public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams, public dataService: SetData) {
-    this.dataService.getTemplates().then((sets) => {
+    this.dataService.getSets().then((sets) => {
       if (sets) {
         this.sets = sets;
       }

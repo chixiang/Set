@@ -52,6 +52,7 @@ export class ItemDetailPage {
     this.item.title = this.title;
     this.item.type = this.type;
 
+    // 保存前，删除最后一个空列表项
     this.selectItems.pop();
     this.item.items = this.selectItems;
 
@@ -59,6 +60,8 @@ export class ItemDetailPage {
   }
 
   close() {
+    // 关闭前，删除最后一个空列表项
+    this.selectItems.pop();
     this.view.dismiss();
   }
 

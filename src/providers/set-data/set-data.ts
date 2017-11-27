@@ -15,7 +15,7 @@ export class SetData {
 
   constructor() {
     this.db = new PouchDB('set');
-    this.remote = 'http://45.76.243.236:5984/set';
+    this.remote = 'http://localhost:5984/set';
     let options = {
       live: true,
       retry: true,
@@ -24,13 +24,32 @@ export class SetData {
     this.db.sync(this.remote, options);
   }
 
-  getTemplates() {
+  getSets() {
     if (this.data) {
       return Promise.resolve(this.data);
     }
 
     return new Promise(resolve => {
       this.db.allDocs({
+        include_docs: true
+      }).then((result) => {
+        this.data = [];
+        let docs = result.rows.map((row) => {
+          this.data.push(row.doc);
+        });
+        resolve(this.data);
+        this.db.changes({ live: true, since: 'now', include_docs: true }).on('change', (change) => {
+          this.handleChange(change);
+        });
+      }).catch((error) => {
+        console.log(error);
+      });
+    });
+  }
+
+  getSet(id) {
+    return new Promise(resolve => {
+      this.db.get(id, {
         include_docs: true
       }).then((result) => {
         this.data = [];

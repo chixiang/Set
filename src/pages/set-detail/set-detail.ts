@@ -38,46 +38,28 @@ export class SetDetailPage {
   }
 
   addRow() {
-    let addModal = this.modalCtrl.create(AddRowPage, 
-    {
-      template: this.template
-    });
+    let addModal = this.modalCtrl.create(AddRowPage,
+      {
+        template: this.template
+      });
     addModal.onDidDismiss((row) => {
       if (row) {
-        this.set.rows.push(row);
-        this.updateRowData();
-        // 因为上一步更新了set，id和rev发生变化，需要重新获取set。否则不能继续增加或修改row
-        this.refreshSetData();
+        this.rows.push(row);
       }
     });
 
     addModal.present();
   }
 
-  updateRowData() {
-    this.dataService.updateSet(this.set);
+  deleteRow(row) {
+    let index = this.rows.indexOf(row);
+    this.rows = this.rows.slice(0, index).concat(this.rows.slice(index + 1, this.rows.length));
   }
 
-  refreshSetData() {
-    this.dataService.getSet(this.set._id).then((sets) => {
-      if (sets) {
-        this.set = sets[0];
-      }
-    });
-    this.rows = this.set.rows;
-    // this.dataService.getSets().then((sets) => {
-    //   if (sets) {
-    //     for(var i = 0; i < sets.length; i++) {
-    //       if (this.set._id == sets[i]._id) {
-    //         this.set = sets[i];
-    //         break;
-    //       } else {
-    //         continue;
-    //       }
-    //     }
-    //   }
-    // });
-    // this.rows = this.set.rows;
+  saveSet() {
+    this.set.rows = this.rows;
+    this.dataService.updateSet(this.set);
+    this.view.dismiss();
   }
 
   // close() {

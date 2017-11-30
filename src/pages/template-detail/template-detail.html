@@ -15,8 +15,8 @@
       Template Detail
     </ion-title>
     <ion-buttons end>
-      <button ion-button icon-only (click)="addItem()">
-        <ion-icon name="add-circle"></ion-icon>
+      <button ion-button icon-only (click)="saveTemplate()">
+        <ion-icon name="checkmark-circle"></ion-icon>
       </button>
     </ion-buttons>
   </ion-toolbar>
@@ -47,6 +47,8 @@
     </ion-item-sliding>
   </ion-list>
 
-  <button full ion-button (click)="saveTemplate()">Save</button>
+  <ion-fab right bottom>
+    <button ion-fab (click)="addItem()"><ion-icon name="ios-add"></ion-icon></button>
+  </ion-fab>
 
 </ion-content>

@@ -6,14 +6,19 @@
 -->
 <ion-header>
   <ion-toolbar>
-    <ion-title>
-      Add Item
-    </ion-title>
-    <ion-buttons end>
+    <ion-buttons start>
       <button ion-button icon-only (click)="close()">
         <ion-icon name="close"></ion-icon>
       </button>
     </ion-buttons>
+    <ion-title>
+      Add Item
+    </ion-title>
+    <ion-buttons end>
+        <button ion-button icon-only (click)="saveItem()">
+          <ion-icon name="checkmark"></ion-icon>
+        </button>
+      </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -53,7 +58,5 @@
       <ion-input type="text" [(ngModel)]="item.value" (blur)="addNullSelectItem()"></ion-input>
     </ion-item>
   </ion-list>
-
-  <button full ion-button (click)="saveItem()">Save</button>
 
 </ion-content>

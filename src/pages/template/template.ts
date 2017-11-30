@@ -44,15 +44,18 @@ export class TemplatePage {
   }
 
   viewTemplate(template) {
-    let addModal = this.modalCtrl.create(TemplateDetailPage, {
+    // let addModal = this.modalCtrl.create(TemplateDetailPage, {
+    //   template: template
+    // });
+    // addModal.onDidDismiss((template) => {
+    //   if (template) {
+    //     this.saveTemplate(template);
+    //   }
+    // });
+    // addModal.present();
+    this.navCtrl.push(TemplateDetailPage, {
       template: template
     });
-    addModal.onDidDismiss((template) => {
-      if (template) {
-        this.saveTemplate(template);
-      }
-    });
-    addModal.present();
   }
 
   createTemplate(template) {

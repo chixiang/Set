@@ -39,15 +39,9 @@ export class AddTemplatePage {
   }
 
   viewItem(item) {
-    let addModal = this.modalCtrl.create(ItemDetailPage, {
+    this.navCtrl.push(ItemDetailPage, {
       item: item
     });
-    addModal.onDidDismiss((item) => {
-      if (item) {
-        //this.saveItem(item);
-      }
-    });
-    addModal.present();
   }
 
   saveItem(item) {

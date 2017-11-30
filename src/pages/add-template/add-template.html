@@ -15,8 +15,8 @@
       Add Template
     </ion-title>
     <ion-buttons end>
-      <button ion-button icon-only (click)="addItem()">
-        <ion-icon name="add-circle"></ion-icon>
+      <button ion-button icon-only (click)="saveTemplate()">
+        <ion-icon name="checkmark"></ion-icon>
       </button>
     </ion-buttons>
   </ion-toolbar>
@@ -38,6 +38,8 @@
     <ion-item *ngFor="let item of items" (click)="viewItem(item)">{{item.title}}</ion-item>
   </ion-list>
 
-  <button full ion-button (click)="saveTemplate()">Save</button>
+  <ion-fab right bottom>
+    <button ion-fab (click)="addItem()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
 
 </ion-content>

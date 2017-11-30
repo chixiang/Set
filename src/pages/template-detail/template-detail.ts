@@ -5,6 +5,8 @@ import { ModalController } from 'ionic-angular/components/modal/modal-controller
 import { AddItemPage } from '../add-item/add-item';
 import { ItemDetailPage } from '../item-detail/item-detail';
 
+import { TemplateData } from '../../providers/data/data';
+
 /**
  * Generated class for the TemplateDetailPage page.
  *
@@ -23,7 +25,7 @@ export class TemplateDetailPage {
   description;
   items = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public view: ViewController, public modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public view: ViewController, public modalCtrl: ModalController, public dataService: TemplateData) {
   }
 
   ionViewDidLoad() {
@@ -40,26 +42,25 @@ export class TemplateDetailPage {
     let addModal = this.modalCtrl.create(AddItemPage);
     addModal.onDidDismiss((item) => {
       if (item) {
-        this.saveItem(item);
+        this.items.push(item);
       }
     });
     addModal.present();
   }
 
   viewItem(item) {
-    let addModal = this.modalCtrl.create(ItemDetailPage, {
+    // let addModal = this.modalCtrl.create(ItemDetailPage, {
+    //   item: item
+    // });
+    // addModal.onDidDismiss((item) => {
+    //   if (item) {
+    //     //this.saveItem(item);
+    //   }
+    // });
+    // addModal.present();
+    this.navCtrl.push(ItemDetailPage, {
       item: item
     });
-    addModal.onDidDismiss((item) => {
-      if (item) {
-        //this.saveItem(item);
-      }
-    });
-    addModal.present();
-  }
-
-  saveItem(item) {
-    this.items.push(item);
   }
 
   deleteItem(item) {
@@ -72,10 +73,8 @@ export class TemplateDetailPage {
     this.template.description = this.description;
     this.template.items = this.items;
 
-    this.view.dismiss(this.template);
-  }
+    this.dataService.updateTemplate(this.template);
 
-  close() {
     this.view.dismiss();
   }
 

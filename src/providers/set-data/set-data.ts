@@ -34,7 +34,6 @@ export class SetData {
         include_docs: true
       }).then((result) => {
         this.data = [];
-        console.log(result);
         let docs = result.rows.map((row) => {
           this.data.push(row.doc);
         });

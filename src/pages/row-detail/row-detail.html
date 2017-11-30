@@ -1,0 +1,55 @@
+<!--
+  Generated template for the RowDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Row Detail
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="saveRow()">
+        <ion-icon name="checkmark"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+    <ion-item *ngFor="let item of items" [ngSwitch]="item.type">
+      <ion-label>{{item.title}}</ion-label>
+      <!-- String -->
+      <ion-input *ngSwitchCase="'string'" type="text" [(ngModel)]="item.value"></ion-input>
+      <!-- Number -->
+      <ion-input *ngSwitchCase="'number'" type="number" [(ngModel)]="item.value"></ion-input>
+      <!-- Email -->
+      <ion-input *ngSwitchCase="'email'" type="email" [(ngModel)]="item.value"></ion-input>
+      <!-- Url -->
+      <ion-input *ngSwitchCase="'url'" type="url" [(ngModel)]="item.value"></ion-input>
+      <!-- Select -->
+      <ion-select *ngSwitchCase="'select'" [(ngModel)]="item.value" interface="popover">
+        <ion-option *ngFor="let selectItem of item.selectItems">{{selectItem.value}}</ion-option>
+      </ion-select>
+      <!-- Date -->
+      <ion-datetime *ngSwitchCase="'date'" displayFormat="YYYY MMM DD" [(ngModel)]="item.value"></ion-datetime>
+      <!-- Time -->
+      <ion-datetime *ngSwitchCase="'time'" displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="item.value"></ion-datetime>
+      <!-- Password -->
+      <ion-input *ngSwitchCase="'password'" type="password" [(ngModel)]="item.value"></ion-input>
+      <!-- Toggle -->
+      <ion-toggle *ngSwitchCase="'toggle'" checked="false" [(ngModel)]="item.value"></ion-toggle>
+      <!-- Range -->
+      <ion-range *ngSwitchCase="'range'" [(ngModel)]="item.value">
+        <ion-icon range-left small name="sunny"></ion-icon>
+        <ion-icon range-right name="sunny"></ion-icon>
+      </ion-range>
+      <!-- Default -->
+      <ion-input *ngSwitchDefault type="text" [(ngModel)]="item.value"></ion-input>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

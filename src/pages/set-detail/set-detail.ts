@@ -4,6 +4,7 @@ import { ViewController } from 'ionic-angular/navigation/view-controller';
 import { ModalController } from 'ionic-angular/components/modal/modal-controller';
 
 import { AddRowPage } from '../add-row/add-row';
+import { RowDetailPage } from '../row-detail/row-detail';
 
 import { SetData } from '../../providers/set-data/set-data';
 
@@ -35,6 +36,7 @@ export class SetDetailPage {
   }
 
   ionViewDidLoad() {
+    
   }
 
   addRow() {
@@ -49,6 +51,25 @@ export class SetDetailPage {
     });
 
     addModal.present();
+  }
+
+  viewRow(row) {
+    // let addModal = this.modalCtrl.create(RowDetailPage,
+    //   {
+    //     template: this.template,
+    //     row: row
+    //   });
+    // addModal.onDidDismiss((row) => {
+    //   if (row) {
+    //     this.rows.push(row);
+    //   }
+    // });
+
+    // addModal.present();
+    this.navCtrl.push(RowDetailPage, {
+      template: this.template,
+      row: row
+    });
   }
 
   deleteRow(row) {

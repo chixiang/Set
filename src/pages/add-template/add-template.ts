@@ -58,6 +58,11 @@ export class AddTemplatePage {
     this.view.dismiss(newTemplate);
   }
 
+  deleteItem(item) {
+    let index = this.items.indexOf(item);
+    this.items = this.items.slice(0, index).concat(this.items.slice(index + 1, this.items.length));
+  }
+
   close() {
     this.view.dismiss();
   }

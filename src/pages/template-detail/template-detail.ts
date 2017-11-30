@@ -49,15 +49,6 @@ export class TemplateDetailPage {
   }
 
   viewItem(item) {
-    // let addModal = this.modalCtrl.create(ItemDetailPage, {
-    //   item: item
-    // });
-    // addModal.onDidDismiss((item) => {
-    //   if (item) {
-    //     //this.saveItem(item);
-    //   }
-    // });
-    // addModal.present();
     this.navCtrl.push(ItemDetailPage, {
       item: item
     });

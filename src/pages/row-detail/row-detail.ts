@@ -23,7 +23,6 @@ export class RowDetailPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public view: ViewController) {
     if (this.navParams.get('row')) {
       this.row = this.navParams.get('row');
-      console.log(this.row);
     }
     if (this.navParams.get('template')) {
       this.template = this.navParams.get('template');
@@ -49,11 +48,9 @@ export class RowDetailPage {
   ionViewDidLoad() {
     if (this.navParams.get('row')) {
       this.row = this.navParams.get('row');
-      console.log(this.row);
     }
     if (this.navParams.get('template')) {
       this.template = this.navParams.get('template');
-      console.log(this.template);
       for (var i = 0; i < this.template.items.length; i++) {
         if (this.template.items[i].type == "select") {
           this.items[i] = {

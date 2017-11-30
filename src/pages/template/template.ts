@@ -32,6 +32,15 @@ export class TemplatePage {
     console.log('ionViewDidLoad TemplatePage');
   }
 
+  doRefresh(refresher) {
+    console.log('Begin async operation', refresher);
+
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      refresher.complete();
+    }, 2000);
+  }
+
   addTemplate() {
     let addModal = this.modalCtrl.create(AddTemplatePage);
     addModal.onDidDismiss((template) => {
@@ -44,15 +53,6 @@ export class TemplatePage {
   }
 
   viewTemplate(template) {
-    // let addModal = this.modalCtrl.create(TemplateDetailPage, {
-    //   template: template
-    // });
-    // addModal.onDidDismiss((template) => {
-    //   if (template) {
-    //     this.saveTemplate(template);
-    //   }
-    // });
-    // addModal.present();
     this.navCtrl.push(TemplateDetailPage, {
       template: template
     });

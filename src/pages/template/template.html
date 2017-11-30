@@ -19,9 +19,10 @@
 </ion-header>
 
 <ion-content>
-  <!-- <ion-list>
-    <ion-item *ngFor="let template of templates" (click)="viewTemplate(template)">{{template.title}}</ion-item>
-  </ion-list> -->
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles" refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
   <ion-list>
     <ion-item-sliding *ngFor="let template of templates">
       <button ion-item (click)="viewTemplate(template)">

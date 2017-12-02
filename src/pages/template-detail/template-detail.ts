@@ -7,6 +7,8 @@ import { ItemDetailPage } from '../item-detail/item-detail';
 
 import { TemplateData } from '../../providers/data/data';
 
+import { ToastController } from 'ionic-angular';
+
 /**
  * Generated class for the TemplateDetailPage page.
  *
@@ -25,7 +27,7 @@ export class TemplateDetailPage {
   description;
   items = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public view: ViewController, public modalCtrl: ModalController, public dataService: TemplateData) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public view: ViewController, public modalCtrl: ModalController, public dataService: TemplateData, public toastCtrl: ToastController) {
   }
 
   ionViewDidLoad() {
@@ -60,6 +62,16 @@ export class TemplateDetailPage {
   }
 
   saveTemplate() {
+    console.log(this.title);
+    console.log(this.items.length);
+    if (this.title == undefined || this.title == "") {
+      this.showToast('top', "Template can't be saved without a title!");
+      return;
+    }
+    if (this.items.length == 0) {
+      this.showToast('top', "Template can't be saved without a item!");
+      return;
+    }
     this.template.title = this.title;
     this.template.description = this.description;
     this.template.items = this.items;
@@ -67,6 +79,16 @@ export class TemplateDetailPage {
     this.dataService.updateTemplate(this.template);
 
     this.view.dismiss();
+  }
+
+  showToast(position: string, message: string) {
+    let toast = this.toastCtrl.create({
+      message: message,
+      duration: 2000,
+      position: position
+    });
+
+    toast.present(toast);
   }
 
 }

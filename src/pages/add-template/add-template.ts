@@ -4,7 +4,7 @@ import { NavController, ModalController, ViewController, NavParams } from 'ionic
 import { AddItemPage } from '../add-item/add-item';
 import { ItemDetailPage } from '../item-detail/item-detail';
 
-import { ToastController } from 'ionic-angular';
+import { UtilsService } from '../../services/utils/utils';
 /**
  * Generated class for the AddTemplatePage page.
  *
@@ -22,7 +22,7 @@ export class AddTemplatePage {
   public description: string;
   public items = [];
 
-  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams, public view: ViewController, public toastCtrl: ToastController) {
+  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams, public view: ViewController, public utilsService: UtilsService) {
   }
 
   ionViewDidLoad() {
@@ -53,11 +53,11 @@ export class AddTemplatePage {
     console.log(this.title);
     console.log(this.items.length);
     if (this.title == undefined || this.title == "") {
-      this.showToast('top', "Template can not be saved without a title!");
+      this.utilsService.showToast('top', "Template can not be saved without a title!");
       return;
     }
     if (this.items.length == 0) {
-      this.showToast('top', "Template can not be saved without a item!");
+      this.utilsService.showToast('top', "Template can not be saved without a item!");
       return;
     }
     let newTemplate = {
@@ -72,16 +72,6 @@ export class AddTemplatePage {
   deleteItem(item) {
     let index = this.items.indexOf(item);
     this.items = this.items.slice(0, index).concat(this.items.slice(index + 1, this.items.length));
-  }
-
-  showToast(position: string, message: string) {
-    let toast = this.toastCtrl.create({
-      message: message,
-      duration: 2000,
-      position: position
-    });
-
-    toast.present(toast);
   }
 
   close() {

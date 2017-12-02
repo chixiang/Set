@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
-import { expressionType } from '@angular/compiler/src/output/output_ast';
 import { ToastController } from 'ionic-angular';
 
 /**

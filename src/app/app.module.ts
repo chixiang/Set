@@ -22,6 +22,8 @@ import { IonicStorageModule } from '@ionic/storage';
 import { TemplateData } from '../providers/data/data';
 import { SetData } from '../providers/set-data/set-data';
 
+import { UtilsService } from '../services/utils/utils';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -62,7 +64,8 @@ import { SetData } from '../providers/set-data/set-data';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     TemplateData,
-    SetData
+    SetData,
+    UtilsService
   ]
 })
 export class AppModule {}

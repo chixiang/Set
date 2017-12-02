@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { NgIf } from '@angular/common';
-import { NgSwitch, NgSwitchCase, NgSwitchDefault } from '@angular/common';
 import { NavController, NavParams } from 'ionic-angular';
 import { ViewController } from 'ionic-angular/navigation/view-controller';
 

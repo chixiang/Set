@@ -9,11 +9,6 @@
     <ion-title>
       Set
     </ion-title>
-    <ion-buttons end>
-      <button ion-button icon-only (click)="addSet()">
-        <ion-icon name="add"></ion-icon>
-      </button>
-    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
@@ -35,4 +30,9 @@
       </ion-item-options>
     </ion-item-sliding>
   </ion-list>
+
+  <ion-fab right bottom>
+    <button ion-fab (click)="addSet()"><ion-icon name="ios-add"></ion-icon></button>
+  </ion-fab>
+
 </ion-content>

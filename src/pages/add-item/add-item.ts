@@ -47,11 +47,11 @@ export class AddItemPage {
 
   saveItem() {
     if (this.title == undefined || this.title == "") {
-      this.utilsService.showToast('top', "Item couldn't be saved without a title!");
+      this.utilsService.showToast('top', "Item can not be saved without a title!");
       return;
     }
     if (this.type == undefined || this.type == "") {
-      this.utilsService.showToast('top', "Item couldn't be saved without a type!");
+      this.utilsService.showToast('top', "Item can not be saved without a type!");
       return;
     }
     this.selectItems.pop();

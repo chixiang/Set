@@ -42,7 +42,7 @@ export class AddSetPage {
 
   saveSet() {
     if (this.title == undefined || this.title == "") {
-      this.utilsService.showToast('top', "Set couldn't be saved without a title!");
+      this.utilsService.showToast('top', "Set can not be saved without a title!");
       return;
     }
     for (var i = 0; i < this.templates.length; i++) {

@@ -64,11 +64,11 @@ export class TemplateDetailPage {
     console.log(this.title);
     console.log(this.items.length);
     if (this.title == undefined || this.title == "") {
-      this.utilsService.showToast('top', "Template can't be saved without a title!");
+      this.utilsService.showToast('top', "Template can not be saved without a title!");
       return;
     }
     if (this.items.length == 0) {
-      this.utilsService.showToast('top', "Template can't be saved without a item!");
+      this.utilsService.showToast('top', "Template can not be saved without a item!");
       return;
     }
     this.template.title = this.title;

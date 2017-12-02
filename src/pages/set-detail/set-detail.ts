@@ -54,18 +54,6 @@ export class SetDetailPage {
   }
 
   viewRow(row) {
-    // let addModal = this.modalCtrl.create(RowDetailPage,
-    //   {
-    //     template: this.template,
-    //     row: row
-    //   });
-    // addModal.onDidDismiss((row) => {
-    //   if (row) {
-    //     this.rows.push(row);
-    //   }
-    // });
-
-    // addModal.present();
     this.navCtrl.push(RowDetailPage, {
       template: this.template,
       row: row

@@ -6,8 +6,7 @@ import { AddItemPage } from '../add-item/add-item';
 import { ItemDetailPage } from '../item-detail/item-detail';
 
 import { TemplateData } from '../../providers/data/data';
-
-import { ToastController } from 'ionic-angular';
+import { UtilsService } from '../../services/utils/utils';
 
 /**
  * Generated class for the TemplateDetailPage page.
@@ -27,7 +26,7 @@ export class TemplateDetailPage {
   description;
   items = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public view: ViewController, public modalCtrl: ModalController, public dataService: TemplateData, public toastCtrl: ToastController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public view: ViewController, public modalCtrl: ModalController, public dataService: TemplateData, public utilsService: UtilsService) {
   }
 
   ionViewDidLoad() {
@@ -65,11 +64,11 @@ export class TemplateDetailPage {
     console.log(this.title);
     console.log(this.items.length);
     if (this.title == undefined || this.title == "") {
-      this.showToast('top', "Template can't be saved without a title!");
+      this.utilsService.showToast('top', "Template can't be saved without a title!");
       return;
     }
     if (this.items.length == 0) {
-      this.showToast('top', "Template can't be saved without a item!");
+      this.utilsService.showToast('top', "Template can't be saved without a item!");
       return;
     }
     this.template.title = this.title;
@@ -79,16 +78,6 @@ export class TemplateDetailPage {
     this.dataService.updateTemplate(this.template);
 
     this.view.dismiss();
-  }
-
-  showToast(position: string, message: string) {
-    let toast = this.toastCtrl.create({
-      message: message,
-      duration: 2000,
-      position: position
-    });
-
-    toast.present(toast);
   }
 
 }

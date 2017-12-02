@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
-import { ToastController } from 'ionic-angular';
+import { UtilsService } from '../../services/utils/utils';
 
 /**
  * Generated class for the ItemDetailPage page.
@@ -20,7 +20,7 @@ export class ItemDetailPage {
   type;
   selectItems = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public view: ViewController, public toastCtrl: ToastController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public view: ViewController, public utilsService: UtilsService) {
   }
 
   ionViewDidLoad() {
@@ -51,11 +51,11 @@ export class ItemDetailPage {
 
   saveItem() {
     if (this.title == undefined || this.title == "") {
-      this.showToast('top', "Item couldn't be saved without a title!");
+      this.utilsService.showToast('top', "Item couldn't be saved without a title!");
       return;
     }
     if (this.type == undefined || this.type == "") {
-      this.showToast('top', "Item couldn't be saved without a type!");
+      this.utilsService.showToast('top', "Item couldn't be saved without a type!");
       return;
     }
     this.item.title = this.title;
@@ -66,16 +66,6 @@ export class ItemDetailPage {
     this.item.items = this.selectItems;
 
     this.view.dismiss(this.item);
-  }
-
-  showToast(position: string, message: string) {
-    let toast = this.toastCtrl.create({
-      message: message,
-      duration: 2000,
-      position: position
-    });
-
-    toast.present(toast);
   }
 
   close() {

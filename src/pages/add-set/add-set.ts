@@ -3,7 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 
 import { TemplateData } from '../../providers/data/data';
 import { ViewController } from 'ionic-angular/navigation/view-controller';
-import { ToastController } from 'ionic-angular';
+import { UtilsService } from '../../services/utils/utils';
 
 /**
  * Generated class for the AddSetPage page.
@@ -25,7 +25,7 @@ export class AddSetPage {
   type;
   template;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public dataService: TemplateData, public view: ViewController, public toastCtrl: ToastController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public dataService: TemplateData, public view: ViewController, public utilsService: UtilsService) {
     this.dataService.getTemplates().then((templates) => {
       if (templates) {
         this.templates = templates;
@@ -42,7 +42,7 @@ export class AddSetPage {
 
   saveSet() {
     if (this.title == undefined || this.title == "") {
-      this.showToast('top', "Set couldn't be saved without a title!");
+      this.utilsService.showToast('top', "Set couldn't be saved without a title!");
       return;
     }
     for (var i = 0; i < this.templates.length; i++) {
@@ -60,16 +60,6 @@ export class AddSetPage {
     };
 
     this.view.dismiss(newSet);
-  }
-
-  showToast(position: string, message: string) {
-    let toast = this.toastCtrl.create({
-      message: message,
-      duration: 2000,
-      position: position
-    });
-
-    toast.present(toast);
   }
 
   close() {

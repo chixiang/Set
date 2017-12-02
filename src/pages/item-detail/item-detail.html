@@ -46,7 +46,7 @@
       </ion-list-header>
       <ion-item *ngFor="let item of selectItems">
         <ion-label>Value</ion-label>
-        <ion-input type="text" [(ngModel)]="item.value" (ionblur)="addNullSelectItem()"></ion-input>
+        <ion-input type="text" [(ngModel)]="item.value" (focusout)="addNullSelectItem()"></ion-input>
       </ion-item>
     </ion-list>
  

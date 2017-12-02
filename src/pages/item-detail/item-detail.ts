@@ -28,10 +28,10 @@ export class ItemDetailPage {
       this.item = this.navParams.get('item');
       this.title = this.navParams.get('item').title;
       this.type = this.navParams.get('item').type;
-      if (this.type == "select") {
+      //if (this.type == "select") {
         this.selectItems = this.navParams.get('item').items;
         this.addNullSelectItem();
-      }
+      //}
     }
   }
 

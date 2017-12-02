@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
 import { expressionType } from '@angular/compiler/src/output/output_ast';
+import { ToastController } from 'ionic-angular';
 
 /**
  * Generated class for the AddItemPage page.
@@ -20,7 +21,7 @@ export class AddItemPage {
   selectItems = [];
   item;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public view: ViewController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public view: ViewController, public toastCtrl: ToastController) {
     let item = {
       value: ""
     }
@@ -46,6 +47,14 @@ export class AddItemPage {
   }
 
   saveItem() {
+    if (this.title == undefined || this.title == "") {
+      this.showToast('top', "Item couldn't be saved without a title!");
+      return;
+    }
+    if (this.type == undefined || this.type == "") {
+      this.showToast('top', "Item couldn't be saved without a type!");
+      return;
+    }
     this.selectItems.pop();
     let newItem = {
       title: this.title,
@@ -55,6 +64,16 @@ export class AddItemPage {
 
     this.view.dismiss(newItem);
 
+  }
+
+  showToast(position: string, message: string) {
+    let toast = this.toastCtrl.create({
+      message: message,
+      duration: 2000,
+      position: position
+    });
+
+    toast.present(toast);
   }
 
   close() {

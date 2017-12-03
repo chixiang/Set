@@ -34,7 +34,7 @@
     </ion-item>
   </ion-list>
 
-  <ion-list>
+  <ion-list reorder="true" (ionItemReorder)="reorderItems($event)">
     <ion-item-sliding *ngFor="let item of items">
       <button ion-item (click)="viewItem(item)">
         <h2>{{item.title}}</h2>

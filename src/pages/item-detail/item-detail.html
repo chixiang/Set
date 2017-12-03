@@ -9,20 +9,22 @@
     <ion-title>
       Item Detail
     </ion-title>
-      <ion-buttons end>
-        <button ion-button icon-only (click)="saveItem()"><ion-icon name="checkmark"></ion-icon></button>
-      </ion-buttons>
-    </ion-navbar>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="saveItem()">
+        <ion-icon name="checkmark"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
 </ion-header>
- 
+
 <ion-content>
   <ion-list>
- 
+
     <ion-item>
       <ion-label floating>Title</ion-label>
       <ion-input type="text" [(ngModel)]="title"></ion-input>
     </ion-item>
- 
+
     <ion-item>
       <ion-label>Type</ion-label>
       <ion-select [(ngModel)]="type" interface="popover">
@@ -37,17 +39,19 @@
         <ion-option value="password">密码</ion-option>
       </ion-select>
     </ion-item>
- 
+
   </ion-list>
 
   <ion-list *ngIf="type == 'select'">
-      <ion-list-header>
-        Select items
-      </ion-list-header>
+    <ion-list-header>
+      Select items
+    </ion-list-header>
+    <ion-item-group reorder="true" (ionItemReorder)="reorderSelectItems($event)">
       <ion-item *ngFor="let item of selectItems">
         <ion-label>Value</ion-label>
         <ion-input type="text" [(ngModel)]="item.value" (focusout)="addNullSelectItem()"></ion-input>
       </ion-item>
-    </ion-list>
- 
+    </ion-item-group>
+  </ion-list>
+
 </ion-content>

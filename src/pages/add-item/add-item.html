@@ -15,10 +15,10 @@
       Add Item
     </ion-title>
     <ion-buttons end>
-        <button ion-button icon-only (click)="saveItem()">
-          <ion-icon name="checkmark"></ion-icon>
-        </button>
-      </ion-buttons>
+      <button ion-button icon-only (click)="saveItem()">
+        <ion-icon name="checkmark"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -57,10 +57,12 @@
     <ion-list-header>
       Select items
     </ion-list-header>
-    <ion-item *ngFor="let item of selectItems">
-      <ion-label>Value</ion-label>
-      <ion-input type="text" [(ngModel)]="item.value" (focusout)="addNullSelectItem()"></ion-input>
-    </ion-item>
+    <ion-item-group reorder="true" (ionItemReorder)="reorderSelectItems($event)">
+      <ion-item *ngFor="let item of selectItems">
+        <ion-label>Value</ion-label>
+        <ion-input type="text" [(ngModel)]="item.value" (focusout)="addNullSelectItem()"></ion-input>
+      </ion-item>
+    </ion-item-group>
   </ion-list>
 
 </ion-content>

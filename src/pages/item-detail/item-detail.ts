@@ -35,6 +35,14 @@ export class ItemDetailPage {
     }
   }
 
+  reorderSelectItems(indexes) {
+    console.log("reordering...");
+    // this.templates = reorderArray(this.templates, indexes);
+    let element = this.selectItems[indexes.from];
+    this.selectItems.splice(indexes.from, 1);
+    this.selectItems.splice(indexes.to, 0, element);
+  }
+
   addNullSelectItem() {
     for (var i = 0; i < this.selectItems.length; i++) {
       if (this.selectItems[i].value == "") {

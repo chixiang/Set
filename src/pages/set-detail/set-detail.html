@@ -21,7 +21,7 @@
   <!-- <ion-list>
     <ion-item *ngFor="let template of templates" (click)="viewTemplate(template)">{{template.title}}</ion-item>
   </ion-list> -->
-  <ion-list>
+  <ion-list reorder="true" (ionItemReorder)="reorderRows($event)">
     <ion-item-sliding *ngFor="let row of rows">
       <button ion-item (click)="viewRow(row)">
         <h2>{{row[0]}}</h2>

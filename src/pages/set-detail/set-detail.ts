@@ -40,6 +40,14 @@ export class SetDetailPage {
     
   }
 
+  reorderRows(indexes) {
+    console.log("reordering...");
+    // this.templates = reorderArray(this.templates, indexes);
+    let element = this.rows[indexes.from];
+    this.rows.splice(indexes.from, 1);
+    this.rows.splice(indexes.to, 0, element);
+  }
+
   addRow() {
     let addModal = this.modalCtrl.create(AddRowPage,
       {

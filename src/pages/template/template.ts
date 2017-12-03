@@ -6,6 +6,8 @@ import { TemplateDetailPage } from '../template-detail/template-detail';
 import { TemplateData } from '../../providers/data/data';
 import { UtilsService } from '../../services/utils/utils';
 
+import { reorderArray } from 'ionic-angular';
+
 /**
  * Generated class for the TemplatePage page.
  *
@@ -20,6 +22,8 @@ import { UtilsService } from '../../services/utils/utils';
 export class TemplatePage {
 
   public templates = [];
+  public iconsortable = 'ios-shuffle-outline';
+  public flag = false;
 
   constructor(public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams, public dataService: TemplateData, public utilsService: UtilsService) {
     this.dataService.getTemplates().then((templates) => {
@@ -36,11 +40,36 @@ export class TemplatePage {
   doRefresh(refresher) {
     console.log('Begin async operation', refresher);
 
-    setTimeout(() => {
-      console.log('Async operation has ended');
-      refresher.complete();
-    }, 2000);
+    this.dataService.getTemplates().then((templates) => {
+      if (templates) {
+        this.templates = templates;
+      }
+      if (refresher != 0) {
+        refresher.complete();
+      }
+    });
   }
+
+  reorderTemplates(indexes) {
+    console.log("reordering...");
+    // this.templates = reorderArray(this.templates, indexes);
+    let element = this.templates[indexes.from];
+    this.templates.splice(indexes.from, 1);
+    this.templates.splice(indexes.to, 0, element);
+  }
+
+  changeSortable() {
+    if (this.iconsortable == 'ios-shuffle-outline') {
+      this.iconsortable = 'ios-checkmark-outline';
+      this.flag = true;
+    }
+    else {
+      this.iconsortable = 'ios-shuffle-outline';
+      this.flag = false;
+      //this.storage.set('myStore1', this.items);
+      // Todo - save the templates with new order.
+    }
+  };
 
   addTemplate() {
     let addModal = this.modalCtrl.create(AddTemplatePage);
@@ -68,10 +97,10 @@ export class TemplatePage {
   }
 
   deleteTemplate(template) {
-    let isDelete = this.utilsService.doConfirm("", "Delete this template?", ()=> {
+    let isDelete = this.utilsService.doConfirm("", "Delete this template?", () => {
       this.dataService.deleteTemplate(template);
-    }, 
-    ()=>{});
+    },
+      () => { });
   }
 
 }

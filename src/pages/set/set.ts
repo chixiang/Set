@@ -4,6 +4,7 @@ import { NavController, NavParams, ModalController } from 'ionic-angular';
 import { SetData } from '../../providers/set-data/set-data';
 
 import { AddSetPage } from '../add-set/add-set';
+import { EditSetPage } from '../edit-set/edit-set';
 import { SetDetailPage } from '../set-detail/set-detail';
 import { UtilsService } from '../../services/utils/utils';
 
@@ -48,6 +49,19 @@ export class SetPage {
     addModal.onDidDismiss((set) => {
       if (set) {
         this.createSet(set);
+      }
+    });
+
+    addModal.present();
+  }
+
+  editSet(set) {
+    let addModal = this.modalCtrl.create(EditSetPage, {
+      set: set
+    });
+    addModal.onDidDismiss((set) => {
+      if (set) {
+        this.saveSet(set);
       }
     });
 

@@ -24,15 +24,22 @@
         <p>{{set.description}}</p>
       </button>
       <ion-item-options>
-        <button ion-button color="danger" (click)="deleteSet(set)">
-          Delete
+        <button ion-button (click)="editSet(set)">
+            <ion-icon name="ios-create-outline"></ion-icon>
+            Edit
+        </button>
+        <button ion-button color="danger" (click)="deleteSet(set)" icon-start>
+            <ion-icon name="ios-trash-outline"></ion-icon>
+            Delete
         </button>
       </ion-item-options>
     </ion-item-sliding>
   </ion-list>
 
   <ion-fab right bottom>
-    <button ion-fab (click)="addSet()"><ion-icon name="ios-add"></ion-icon></button>
+    <button ion-fab (click)="addSet()">
+      <ion-icon name="ios-add"></ion-icon>
+    </button>
   </ion-fab>
 
 </ion-content>

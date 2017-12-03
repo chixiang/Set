@@ -70,8 +70,11 @@ export class AddTemplatePage {
   }
 
   deleteItem(item) {
-    let index = this.items.indexOf(item);
-    this.items = this.items.slice(0, index).concat(this.items.slice(index + 1, this.items.length));
+    let isDelete = this.utilsService.doConfirm("", "Delete this item?", ()=> {
+      let index = this.items.indexOf(item);
+      this.items = this.items.slice(0, index).concat(this.items.slice(index + 1, this.items.length));
+    }, 
+    ()=>{});
   }
 
   close() {

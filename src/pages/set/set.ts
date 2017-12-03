@@ -5,6 +5,7 @@ import { SetData } from '../../providers/set-data/set-data';
 
 import { AddSetPage } from '../add-set/add-set';
 import { SetDetailPage } from '../set-detail/set-detail';
+import { UtilsService } from '../../services/utils/utils';
 
 /**
  * Generated class for the SetPage page.
@@ -21,7 +22,7 @@ export class SetPage {
 
   public sets = [];
 
-  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams, public dataService: SetData) {
+  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams, public dataService: SetData, public utilsService: UtilsService) {
     this.dataService.getSets().then((sets) => {
       if (sets) {
         this.sets = sets;
@@ -70,7 +71,10 @@ export class SetPage {
   }
 
   deleteSet(set) {
-    this.dataService.deleteSet(set);
+    let isDelete = this.utilsService.doConfirm("", "Delete this set?", ()=> {
+      this.dataService.deleteSet(set);
+    }, 
+    ()=>{});
   }
 
 }

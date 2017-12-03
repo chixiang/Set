@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { ToastController } from 'ionic-angular/components/toast/toast-controller';
+import { AlertController } from 'ionic-angular';
 
 @Injectable()
 export class UtilsService {
 
-    constructor(public toastCtrl: ToastController) {
+    constructor(public toastCtrl: ToastController, public alerCtrl: AlertController) {
     }
 
     showToast(position: string, message: string) {
@@ -15,4 +16,22 @@ export class UtilsService {
         });
         toast.present(toast);
     }
+
+    doConfirm(title: string, message: string, okHandler: any, cancelHandler: any) {
+        let confirm = this.alerCtrl.create({
+          title: title,
+          message: message,
+          buttons: [
+            {
+              text: 'Cancel',
+              handler: cancelHandler
+            },
+            {
+              text: 'OK',
+              handler: okHandler
+            }
+          ]
+        });
+        confirm.present()
+      }
 }

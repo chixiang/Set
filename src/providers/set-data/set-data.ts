@@ -15,7 +15,7 @@ export class SetData {
 
   constructor() {
     this.db = new PouchDB('set');
-    this.remote = 'http://45.76.243.236:5984/set';
+    this.remote = 'http://localhost:5984/set';
     let options = {
       live: true,
       retry: true,

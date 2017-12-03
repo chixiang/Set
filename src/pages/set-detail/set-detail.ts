@@ -7,6 +7,7 @@ import { AddRowPage } from '../add-row/add-row';
 import { RowDetailPage } from '../row-detail/row-detail';
 
 import { SetData } from '../../providers/set-data/set-data';
+import { UtilsService } from '../../services/utils/utils';
 
 /**
  * Generated class for the SetDetailPage page.
@@ -26,7 +27,7 @@ export class SetDetailPage {
   template;
   rows = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public view: ViewController, public modalCtrl: ModalController, public dataService: SetData) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public view: ViewController, public modalCtrl: ModalController, public dataService: SetData, public utilsService: UtilsService) {
     if (this.navParams.get('set')) {
       this.set = this.navParams.get('set');
       this.title = this.set.title;
@@ -61,8 +62,11 @@ export class SetDetailPage {
   }
 
   deleteRow(row) {
-    let index = this.rows.indexOf(row);
-    this.rows = this.rows.slice(0, index).concat(this.rows.slice(index + 1, this.rows.length));
+    let isDelete = this.utilsService.doConfirm("", "Delete this row?", ()=> {
+      let index = this.rows.indexOf(row);
+      this.rows = this.rows.slice(0, index).concat(this.rows.slice(index + 1, this.rows.length));
+    }, 
+    ()=>{});
   }
 
   saveSet() {

@@ -4,6 +4,7 @@ import { NavController, NavParams, ModalController } from 'ionic-angular';
 import { AddTemplatePage } from '../add-template/add-template';
 import { TemplateDetailPage } from '../template-detail/template-detail';
 import { TemplateData } from '../../providers/data/data';
+import { UtilsService } from '../../services/utils/utils';
 
 /**
  * Generated class for the TemplatePage page.
@@ -20,7 +21,7 @@ export class TemplatePage {
 
   public templates = [];
 
-  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams, public dataService: TemplateData) {
+  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams, public dataService: TemplateData, public utilsService: UtilsService) {
     this.dataService.getTemplates().then((templates) => {
       if (templates) {
         this.templates = templates;
@@ -67,7 +68,10 @@ export class TemplatePage {
   }
 
   deleteTemplate(template) {
-    this.dataService.deleteTemplate(template);
+    let isDelete = this.utilsService.doConfirm("", "Delete this template?", ()=> {
+      this.dataService.deleteTemplate(template);
+    }, 
+    ()=>{});
   }
 
 }

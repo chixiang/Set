@@ -4,6 +4,8 @@ import { NavController, NavParams } from 'ionic-angular';
 import { TemplateData } from '../../providers/data/data';
 import { ViewController } from 'ionic-angular/navigation/view-controller';
 import { UtilsService } from '../../services/utils/utils';
+import { ModalController } from 'ionic-angular/components/modal/modal-controller';
+import { AddTemplatePage } from '../add-template/add-template';
 
 /**
  * Generated class for the AddSetPage page.
@@ -25,13 +27,17 @@ export class AddSetPage {
   type;
   template;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public dataService: TemplateData, public view: ViewController, public utilsService: UtilsService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public dataService: TemplateData, public view: ViewController, public utilsService: UtilsService, public modalCtrl: ModalController) {
     this.dataService.getTemplates().then((templates) => {
-      if (templates) {
+      if (templates && templates.length > 0) {
         this.templates = templates;
         for (var i = 0; i < templates.length; i++) {
           this.types[i] = templates[i].title;
         }
+      } else {
+        this.utilsService.showToastWithCloseButton("top", "Please add a template first", "OK");
+        this.addTemplate();
+        this.close();
       }
     });
   }
@@ -60,6 +66,21 @@ export class AddSetPage {
     };
 
     this.view.dismiss(newSet);
+  }
+
+  addTemplate() {
+    let addModal = this.modalCtrl.create(AddTemplatePage);
+    addModal.onDidDismiss((template) => {
+      if (template) {
+        this.createTemplate(template);
+      }
+    });
+
+    addModal.present();
+  }
+
+  createTemplate(template) {
+    this.dataService.createTemplate(template);
   }
 
   close() {

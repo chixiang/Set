@@ -22,6 +22,8 @@ import { UtilsService } from '../../services/utils/utils';
 export class SetPage {
 
   public sets = [];
+  public iconsortable = 'ios-shuffle-outline';
+  public flag = false;
 
   constructor(public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams, public dataService: SetData, public utilsService: UtilsService) {
     this.dataService.getSets().then((sets) => {
@@ -37,12 +39,36 @@ export class SetPage {
 
   doRefresh(refresher) {
     console.log('Begin async operation', refresher);
-
-    setTimeout(() => {
-      console.log('Async operation has ended');
-      refresher.complete();
-    }, 2000);
+    this.dataService.getSets().then((sets) => {
+      if (sets) {
+        this.sets = sets;
+      }
+      if (refresher != 0) {
+        refresher.complete();
+      }
+    });
   }
+
+  reorderSets(indexes) {
+    console.log("reordering...");
+    // this.templates = reorderArray(this.templates, indexes);
+    let element = this.sets[indexes.from];
+    this.sets.splice(indexes.from, 1);
+    this.sets.splice(indexes.to, 0, element);
+  }
+
+  changeSortable() {
+    if (this.iconsortable == 'ios-shuffle-outline') {
+      this.iconsortable = 'ios-checkmark-outline';
+      this.flag = true;
+    }
+    else {
+      this.iconsortable = 'ios-shuffle-outline';
+      this.flag = false;
+      //this.storage.set('myStore1', this.items);
+      // Todo - save the templates with new order.
+    }
+  };
 
   addSet() {
     let addModal = this.modalCtrl.create(AddSetPage);

@@ -9,15 +9,20 @@
     <ion-title>
       Set
     </ion-title>
+    <ion-buttons end>
+        <button ion-button icon-only (click)="changeSortable()">
+          <ion-icon name="{{iconsortable}}"></ion-icon>
+        </button>
+      </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <ion-refresher (ionRefresh)="doRefresh($event)">
+  <ion-refresher (ionRefresh)="doRefresh($event)" *ngIf="flag == false">
     <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles" refreshingText="Refreshing...">
     </ion-refresher-content>
   </ion-refresher>
-  <ion-list>
+  <ion-list reorder="{{flag}}" (ionItemReorder)="reorderSets($event)">
     <ion-item-sliding *ngFor="let set of sets">
       <button ion-item (click)="viewSet(set)">
         <h2>{{set.title}}</h2>

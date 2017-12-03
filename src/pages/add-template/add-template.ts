@@ -29,6 +29,14 @@ export class AddTemplatePage {
     console.log('ionViewDidLoad AddTemplatePage');
   }
 
+  reorderItems(indexes) {
+    console.log("reordering...");
+    // this.templates = reorderArray(this.templates, indexes);
+    let element = this.items[indexes.from];
+    this.items.splice(indexes.from, 1);
+    this.items.splice(indexes.to, 0, element);
+  }
+
   addItem() {
     let addModal = this.modalCtrl.create(AddItemPage);
     addModal.onDidDismiss((item) => {

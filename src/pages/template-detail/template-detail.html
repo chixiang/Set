@@ -23,33 +23,40 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
+  <ion-list inset>
     <ion-item>
-      <ion-label floating>Title</ion-label>
-      <ion-input type="text" [(ngModel)]="title"></ion-input>
+      <ion-label>Title</ion-label>
+      <ion-input text-right type="text" [(ngModel)]="title"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label floating>Description</ion-label>
-      <ion-input type="text" [(ngModel)]="description"></ion-input>
+      <ion-label>Description</ion-label>
+      <ion-input text-right type="text" [(ngModel)]="description"></ion-input>
     </ion-item>
   </ion-list>
 
-  <ion-list reorder="true" (ionItemReorder)="reorderItems($event)">
-    <ion-item-sliding *ngFor="let item of items">
-      <button ion-item (click)="viewItem(item)">
-        <h2>{{item.title}}</h2>
-        <p>{{item.type}}</p>
-      </button>
-      <ion-item-options>
-        <button ion-button color="danger" (click)="deleteItem(item)">
-          Delete
+  <ion-list inset>
+    <ion-list-header>
+      Items
+    </ion-list-header>
+    <ion-item-group reorder="true" (ionItemReorder)="reorderItems($event)">
+      <ion-item-sliding *ngFor="let item of items">
+        <button ion-item (click)="viewItem(item)">
+          <h2>{{item.title}}</h2>
+          <p>{{item.type}}</p>
         </button>
-      </ion-item-options>
-    </ion-item-sliding>
+        <ion-item-options>
+          <button ion-button color="danger" (click)="deleteItem(item)">
+            Delete
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-item-group>
   </ion-list>
 
   <ion-fab right bottom>
-    <button ion-fab (click)="addItem()"><ion-icon name="ios-add"></ion-icon></button>
+    <button ion-fab (click)="addItem()">
+      <ion-icon name="ios-add"></ion-icon>
+    </button>
   </ion-fab>
 
 </ion-content>

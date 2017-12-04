@@ -6,41 +6,41 @@
 -->
 <ion-header>
   <ion-toolbar>
-      <ion-buttons start>
-          <button ion-button icon-only (click)="close()"><ion-icon name="close"></ion-icon></button>
-        </ion-buttons>
+    <ion-buttons start>
+      <button ion-button icon-only (click)="close()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
     <ion-title>
       Add Set
     </ion-title>
-      <ion-buttons end>
-        <button ion-button icon-only (click)="saveSet()"><ion-icon name="checkmark"></ion-icon></button>
-      </ion-buttons>
-    </ion-toolbar>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="saveSet()">
+        <ion-icon name="checkmark"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
- 
+
 <ion-content>
-  <ion-list>
- 
+  <ion-list inset>
     <ion-item>
-      <ion-label floating>Title</ion-label>
-      <ion-input type="text" [(ngModel)]="title"></ion-input>
+      <ion-label>Title</ion-label>
+      <ion-input text-right type="text" [(ngModel)]="title"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label floating>Description</ion-label>
-      <ion-input type="text" [(ngModel)]="description"></ion-input>
+      <ion-label>Description</ion-label>
+      <ion-input text-right type="text" [(ngModel)]="description"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label>Template</ion-label>
-      <!-- <ion-select [(ngModel)]="type" interface="popover">
-        <ion-option *ngFor="let item of items" value="{{item}}">{{item}}</ion-option>
-      </ion-select> -->
       <ion-select interface="popover" [(ngModel)]="type">
         <ion-option *ngFor="let item of types" value="{{item}}">{{item}}</ion-option>
-    </ion-select>
+      </ion-select>
     </ion-item>
 
   </ion-list>
- 
+
 </ion-content>

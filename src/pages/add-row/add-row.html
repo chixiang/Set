@@ -25,9 +25,6 @@
 <ion-content>
   <ion-list>
     <ion-item-group *ngFor="let item of items" [ngSwitch]="item.type">
-      <!-- <ion-item>
-        <ion-label>{{item.title}}</ion-label>
-      </ion-item> -->
       <ion-item *ngSwitchCase="'string'">
         <!-- String -->
         <ion-label>{{item.title}}</ion-label>

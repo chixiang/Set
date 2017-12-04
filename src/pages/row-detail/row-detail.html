@@ -20,36 +20,69 @@
 <ion-content>
 
   <ion-list>
-    <ion-item *ngFor="let item of items" [ngSwitch]="item.type">
-      <ion-label>{{item.title}}</ion-label>
-      <!-- String -->
-      <ion-input *ngSwitchCase="'string'" type="text" [(ngModel)]="item.value"></ion-input>
-      <!-- Number -->
-      <ion-input *ngSwitchCase="'number'" type="number" [(ngModel)]="item.value"></ion-input>
-      <!-- Email -->
-      <ion-input *ngSwitchCase="'email'" type="email" [(ngModel)]="item.value"></ion-input>
-      <!-- Url -->
-      <ion-input *ngSwitchCase="'url'" type="url" [(ngModel)]="item.value"></ion-input>
-      <!-- Select -->
-      <ion-select *ngSwitchCase="'select'" [(ngModel)]="item.value" interface="popover">
-        <ion-option *ngFor="let selectItem of item.selectItems">{{selectItem.value}}</ion-option>
-      </ion-select>
-      <!-- Date -->
-      <ion-datetime *ngSwitchCase="'date'" displayFormat="YYYY MMM DD" [(ngModel)]="item.value"></ion-datetime>
-      <!-- Time -->
-      <ion-datetime *ngSwitchCase="'time'" displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="item.value"></ion-datetime>
-      <!-- Password -->
-      <ion-input *ngSwitchCase="'password'" type="password" [(ngModel)]="item.value"></ion-input>
-      <!-- Toggle -->
-      <ion-toggle *ngSwitchCase="'toggle'" checked="false" [(ngModel)]="item.value"></ion-toggle>
-      <!-- Range -->
-      <ion-range *ngSwitchCase="'range'" [(ngModel)]="item.value">
-        <ion-icon range-left small name="sunny"></ion-icon>
-        <ion-icon range-right name="sunny"></ion-icon>
-      </ion-range>
-      <!-- Default -->
-      <ion-input *ngSwitchDefault type="text" [(ngModel)]="item.value"></ion-input>
-    </ion-item>
+    <ion-item-group *ngFor="let item of items" [ngSwitch]="item.type">
+      <ion-item *ngSwitchCase="'string'">
+        <!-- String -->
+        <ion-label>{{item.title}}</ion-label>
+        <ion-input item-right type="text" [(ngModel)]="item.value"></ion-input>
+      </ion-item>
+      <ion-item *ngSwitchCase="'number'">
+        <!-- Number -->
+        <ion-label>{{item.title}}</ion-label>
+        <ion-input item-right type="number" [(ngModel)]="item.value"></ion-input>
+        <ion-note item-end>{{item.unit}}</ion-note>
+      </ion-item>
+      <ion-item *ngSwitchCase="'email'">
+        <!-- Email -->
+        <ion-label>{{item.title}}</ion-label>
+        <ion-input type="email" [(ngModel)]="item.value"></ion-input>
+      </ion-item>
+      <ion-item *ngSwitchCase="'url'">
+        <!-- Url -->
+        <ion-label>{{item.title}}</ion-label>
+        <ion-input type="url" [(ngModel)]="item.value"></ion-input>
+      </ion-item>
+      <ion-item *ngSwitchCase="'select'">
+        <!-- Select -->
+        <ion-label>{{item.title}}</ion-label>
+        <ion-select [(ngModel)]="item.value" interface="popover">
+          <ion-option *ngFor="let selectItem of item.selectItems">{{selectItem.value}}</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item *ngSwitchCase="'date'">
+        <!-- Date -->
+        <ion-label>{{item.title}}</ion-label>
+        <ion-datetime displayFormat="YYYY MMM DD" [(ngModel)]="item.value"></ion-datetime>
+      </ion-item>
+      <ion-item *ngSwitchCase="'time'">
+        <!-- Time -->
+        <ion-label>{{item.title}}</ion-label>
+        <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="item.value"></ion-datetime>
+      </ion-item>
+      <ion-item *ngSwitchCase="'password'">
+        <!-- Password -->
+        <ion-label>{{item.title}}</ion-label>
+        <ion-input type="password" [(ngModel)]="item.value"></ion-input>
+      </ion-item>
+      <ion-item *ngSwitchCase="'toggle'">
+        <!-- Toggle -->
+        <ion-label>{{item.title}}</ion-label>
+        <ion-toggle checked="false" [(ngModel)]="item.value"></ion-toggle>
+      </ion-item>
+      <ion-item *ngSwitchCase="'range'">
+        <!-- Range -->
+        <ion-label>{{item.title}}</ion-label>
+        <ion-range [(ngModel)]="item.value">
+          <ion-icon range-left small name="sunny"></ion-icon>
+          <ion-icon range-right name="sunny"></ion-icon>
+        </ion-range>
+      </ion-item>
+      <ion-item *ngSwitchDefault>
+        <!-- Default -->
+        <ion-label>{{item.title}}</ion-label>
+        <ion-input type="text" [(ngModel)]="item.value"></ion-input>
+      </ion-item>
+    </ion-item-group>
   </ion-list>
 
 </ion-content>

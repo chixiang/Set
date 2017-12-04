@@ -21,28 +21,35 @@ export class RowDetailPage {
   template;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public view: ViewController) {
-    if (this.navParams.get('row')) {
-      this.row = this.navParams.get('row');
-    }
-    if (this.navParams.get('template')) {
-      this.template = this.navParams.get('template');
-      for (var i = 0; i < this.template.items.length; i++) {
-        if (this.template.items[i].type == "select") {
-          this.items[i] = {
-            title: this.template.items[i].title,
-            type: this.template.items[i].type,
-            selectItems: this.template.items[i].items,
-            value: this.row[i]
-          }
-        } else {
-          this.items[i] = {
-            title: this.template.items[i].title,
-            type: this.template.items[i].type,
-            value: this.row[i]
-          }
-        }
-      }
-    }
+    // if (this.navParams.get('row')) {
+    //   this.row = this.navParams.get('row');
+    // }
+    // if (this.navParams.get('template')) {
+    //   this.template = this.navParams.get('template');
+    //   for (var i = 0; i < this.template.items.length; i++) {
+    //     if (this.template.items[i].type == "select") {
+    //       this.items[i] = {
+    //         title: this.template.items[i].title,
+    //         type: this.template.items[i].type,
+    //         selectItems: this.template.items[i].items,
+    //         value: this.row[i]
+    //       }
+    //     } else if (this.template.items[i].type == "number") {
+    //       this.items[i] = {
+    //         title: this.template.items[i].title,
+    //         type: this.template.items[i].type,
+    //         value: this.row[i],
+    //         unit: this.template.items[i].unit
+    //       }
+    //     } else {
+    //       this.items[i] = {
+    //         title: this.template.items[i].title,
+    //         type: this.template.items[i].type,
+    //         value: this.row[i]
+    //       }
+    //     }
+    //   }
+    // }
   }
 
   ionViewDidLoad() {
@@ -58,6 +65,13 @@ export class RowDetailPage {
             type: this.template.items[i].type,
             selectItems: this.template.items[i].items,
             value: this.row[i]
+          }
+        } else if (this.template.items[i].type == "number") {
+          this.items[i] = {
+            title: this.template.items[i].title,
+            type: this.template.items[i].type,
+            value: this.row[i],
+            unit: this.template.items[i].unit
           }
         } else {
           this.items[i] = {

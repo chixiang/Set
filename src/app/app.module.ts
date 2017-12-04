@@ -24,6 +24,7 @@ import { TemplateData } from '../providers/data/data';
 import { SetData } from '../providers/set-data/set-data';
 
 import { UtilsService } from '../services/utils/utils';
+import { AutosizeDirective } from '../directives/autosize/autosize';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { UtilsService } from '../services/utils/utils';
     SetDetailPage,
     AddRowPage,
     RowDetailPage,
-    EditSetPage
+    EditSetPage,
+    AutosizeDirective
   ],
   imports: [
     BrowserModule,

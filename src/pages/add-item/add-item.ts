@@ -19,6 +19,7 @@ export class AddItemPage {
   type: string;
   selectItems = [];
   item;
+  unit;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public view: ViewController, public utilsService: UtilsService) {
     let item = {
@@ -66,7 +67,8 @@ export class AddItemPage {
     let newItem = {
       title: this.title,
       type: this.type,
-      items: this.selectItems
+      items: this.selectItems,
+      unit: this.unit
     };
 
     this.view.dismiss(newItem);

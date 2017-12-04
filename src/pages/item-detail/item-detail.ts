@@ -19,6 +19,7 @@ export class ItemDetailPage {
   title;
   type;
   selectItems = [];
+  unit;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public view: ViewController, public utilsService: UtilsService) {
   }
@@ -32,6 +33,7 @@ export class ItemDetailPage {
         this.selectItems = this.navParams.get('item').items;
         this.addNullSelectItem();
       //}
+      this.unit = this.navParams.get('item').unit;
     }
   }
 
@@ -72,6 +74,7 @@ export class ItemDetailPage {
     // 保存前，删除最后一个空列表项
     this.selectItems.pop();
     this.item.items = this.selectItems;
+    this.item.unit = this.unit;
 
     this.view.dismiss(this.item);
   }

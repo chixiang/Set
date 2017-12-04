@@ -32,7 +32,13 @@ export class AddRowPage {
           this.items[i] = {
             title: this.template.items[i].title,
             type: this.template.items[i].type,
-            selectItems: this.template.items[i].items
+            selectItems: this.template.items[i].items,
+          }
+        } else if (this.template.items[i].type == "number") {
+          this.items[i] = {
+            title: this.template.items[i].title,
+            type: this.template.items[i].type,
+            unit: this.template.items[i].unit
           }
         } else {
           this.items[i] = {

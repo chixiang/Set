@@ -30,11 +30,6 @@
       <ion-input type="text" [(ngModel)]="title"></ion-input>
     </ion-item>
 
-    <!-- <ion-item>
-      <ion-label floating>Type</ion-label>
-      <ion-input type="text" [(ngModel)]="type"></ion-input>
-    </ion-item> -->
-
     <ion-item>
       <ion-label>Type</ion-label>
       <ion-select [(ngModel)]="type" interface="popover">
@@ -48,10 +43,13 @@
         <ion-option value="toggle">开关</ion-option>
         <ion-option value="password">密码</ion-option>
       </ion-select>
-
     </ion-item>
-
   </ion-list>
+  
+  <ion-item *ngIf="type == 'number'">
+    <ion-label floating>Unit</ion-label>
+    <ion-input type="text" [(ngModel)]="unit"></ion-input>
+  </ion-item>
 
   <ion-list *ngIf="type == 'select'">
     <ion-list-header>

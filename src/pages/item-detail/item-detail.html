@@ -42,6 +42,11 @@
 
   </ion-list>
 
+  <ion-item *ngIf="type == 'number'">
+    <ion-label floating>Unit</ion-label>
+    <ion-input type="text" [(ngModel)]="unit"></ion-input>
+  </ion-item>
+
   <ion-list *ngIf="type == 'select'">
     <ion-list-header>
       Select items

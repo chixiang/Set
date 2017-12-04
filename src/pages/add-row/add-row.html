@@ -30,6 +30,11 @@
         <ion-label>{{item.title}}</ion-label>
         <ion-input text-right type="text" [(ngModel)]="item.value"></ion-input>
       </ion-item>
+      <ion-item *ngSwitchCase="'textarea'">
+        <!-- Textarea -->
+        <ion-label>{{item.title}}</ion-label>
+        <ion-textarea [(ngModel)]="item.value" autosize></ion-textarea>
+      </ion-item>
       <ion-item *ngSwitchCase="'number'">
         <!-- Number -->
         <ion-label>{{item.title}}</ion-label>

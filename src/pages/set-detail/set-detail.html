@@ -24,8 +24,8 @@
   <ion-list reorder="true" (ionItemReorder)="reorderRows($event)">
     <ion-item-sliding *ngFor="let row of rows">
       <button ion-item (click)="viewRow(row)">
-        <h2>{{row[0]}}</h2>
-        <p>{{row[1]}}  {{row[2]}}  {{row[3]}}</p>
+        <h2>{{row[this.set.template.items[0].title]}}</h2>
+        <p>{{row[this.set.template.items[1].title]}}  {{row[this.set.template.items[2].title]}}  {{row[this.set.template.items[3].title]}}</p>
       </button>
 
       <ion-item-options>

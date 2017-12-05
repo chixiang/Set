@@ -6,6 +6,7 @@ import { AddItemPage } from '../add-item/add-item';
 import { ItemDetailPage } from '../item-detail/item-detail';
 
 import { TemplateData } from '../../providers/data/data';
+import { SetData } from '../../providers/set-data/set-data';
 import { UtilsService } from '../../services/utils/utils';
 
 /**
@@ -26,7 +27,7 @@ export class TemplateDetailPage {
   description;
   items = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public view: ViewController, public modalCtrl: ModalController, public dataService: TemplateData, public utilsService: UtilsService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public view: ViewController, public modalCtrl: ModalController, public dataService: TemplateData, public utilsService: UtilsService, public setDataService: SetData) {
   }
 
   ionViewDidLoad() {
@@ -88,7 +89,24 @@ export class TemplateDetailPage {
 
     this.dataService.updateTemplate(this.template);
 
+    // 更新已有set的template
+    this.updateSetTemplate(this.template);
+
     this.view.dismiss();
+  }
+
+  updateSetTemplate(template) {
+    this.setDataService.getSets().then((sets) => {
+      if (sets) {
+        for (var i = 0; i < sets.length; i++) {
+          if (sets[i].template._id == this.template._id) {
+            console.log("更新" + sets[i].title + "模板...");
+            sets[i].template = this.template;
+            this.setDataService.updateSet(sets[i]);
+          }
+        }
+      }
+    });
   }
 
 }

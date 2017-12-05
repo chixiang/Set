@@ -64,20 +64,20 @@ export class RowDetailPage {
             title: this.template.items[i].title,
             type: this.template.items[i].type,
             selectItems: this.template.items[i].items,
-            value: this.row[i]
+            value: this.row[this.template.items[i].title]
           }
         } else if (this.template.items[i].type == "number") {
           this.items[i] = {
             title: this.template.items[i].title,
             type: this.template.items[i].type,
-            value: this.row[i],
+            value: this.row[this.template.items[i].title],
             unit: this.template.items[i].unit
           }
         } else {
           this.items[i] = {
             title: this.template.items[i].title,
             type: this.template.items[i].type,
-            value: this.row[i]
+            value: this.row[this.template.items[i].title]
           }
         }
       }
@@ -85,9 +85,14 @@ export class RowDetailPage {
   }
 
   saveRow() {
+    // for (var i = 0; i < this.items.length; i++) {
+    //   this.row[i] = this.items[i].value;
+    // }
+    // 实现方式二：使用[]来用变量表示json的key，此方式更简单
     for (var i = 0; i < this.items.length; i++) {
-      this.row[i] = this.items[i].value;
+      this.row[this.items[i].title] = this.items[i].value;
     }
+    console.log(this.row);
     this.view.dismiss(this.values);
   }
 

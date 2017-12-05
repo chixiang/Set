@@ -26,6 +26,7 @@ export class SetDetailPage {
   title;
   template;
   rows = [];
+  values = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public view: ViewController, public modalCtrl: ModalController, public dataService: SetData, public utilsService: UtilsService) {
     if (this.navParams.get('set')) {
@@ -33,11 +34,18 @@ export class SetDetailPage {
       this.title = this.set.title;
       this.template = this.set.template;
       this.rows = this.set.rows;
+      for (var j = 0; j < this.set.rows.length; j++) {
+        for (var i = 0; i < this.set.template.items.length; i++) {
+          console.log(this.set.rows[j][this.set.template.items[i].title]);
+          this.values.push(this.set.rows[j][this.set.template.items[i].title]);
+        }
+      }
+      console.log(this.values);
     }
   }
 
   ionViewDidLoad() {
-    
+
   }
 
   reorderRows(indexes) {
@@ -70,11 +78,11 @@ export class SetDetailPage {
   }
 
   deleteRow(row) {
-    let isDelete = this.utilsService.doConfirm("", "Delete this row?", ()=> {
+    let isDelete = this.utilsService.doConfirm("", "Delete this row?", () => {
       let index = this.rows.indexOf(row);
       this.rows = this.rows.slice(0, index).concat(this.rows.slice(index + 1, this.rows.length));
-    }, 
-    ()=>{});
+    },
+      () => { });
   }
 
   saveSet() {

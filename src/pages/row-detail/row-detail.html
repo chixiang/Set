@@ -35,7 +35,7 @@
         <!-- Number -->
         <ion-label>{{item.title}}</ion-label>
         <ion-input text-right type="number" [(ngModel)]="item.value"></ion-input>
-        <ion-note item-end>{{item.unit}}</ion-note>
+        <ion-note item-end *ngIf="item.unit != undefined && item.unit != ''">{{item.unit}}</ion-note>
       </ion-item>
       <ion-item *ngSwitchCase="'email'">
         <!-- Email -->

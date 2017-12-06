@@ -40,7 +40,6 @@ export class SetDetailPage {
           this.values.push(this.set.rows[j][this.set.template.items[i].title]);
         }
       }
-      console.log(this.values);
     }
   }
 

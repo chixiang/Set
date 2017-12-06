@@ -43,7 +43,6 @@ export class AddSetPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AddSetPage');
   }
 
   saveSet() {

@@ -92,7 +92,6 @@ export class RowDetailPage {
     for (var i = 0; i < this.items.length; i++) {
       this.row[this.items[i].title] = this.items[i].value;
     }
-    console.log(this.row);
     this.view.dismiss(this.values);
   }
 

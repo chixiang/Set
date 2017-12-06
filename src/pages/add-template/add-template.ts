@@ -26,11 +26,9 @@ export class AddTemplatePage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AddTemplatePage');
   }
 
   reorderItems(indexes) {
-    console.log("reordering...");
     // this.templates = reorderArray(this.templates, indexes);
     let element = this.items[indexes.from];
     this.items.splice(indexes.from, 1);
@@ -58,8 +56,6 @@ export class AddTemplatePage {
   }
 
   saveTemplate() {
-    console.log(this.title);
-    console.log(this.items.length);
     if (this.title == undefined || this.title == "") {
       this.utilsService.showToast('top', "Template can not be saved without a title!");
       return;

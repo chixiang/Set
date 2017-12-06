@@ -31,7 +31,6 @@ export class TemplateDetailPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AddTemplatePage');
     if (this.navParams.get('template')) {
       this.template = this.navParams.get('template');
       this.title = this.navParams.get('template').title;
@@ -41,7 +40,6 @@ export class TemplateDetailPage {
   }
 
   reorderItems(indexes) {
-    console.log("reordering...");
     // this.templates = reorderArray(this.templates, indexes);
     let element = this.items[indexes.from];
     this.items.splice(indexes.from, 1);
@@ -73,8 +71,6 @@ export class TemplateDetailPage {
   }
 
   saveTemplate() {
-    console.log(this.title);
-    console.log(this.items.length);
     if (this.title == undefined || this.title == "") {
       this.utilsService.showToast('top', "Template can not be saved without a title!");
       return;

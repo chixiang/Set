@@ -18,7 +18,7 @@ export class TemplateData {
 
   constructor() {
     this.db = new PouchDB('template');
-    this.remote = 'http://localhost:5984/template';
+    this.remote = 'http://45.77.208.33:5984/template';
     let options = {
       live: true,
       retry: true,
@@ -51,16 +51,19 @@ export class TemplateData {
   }
 
   createTemplate(template) {
+    console.log("创建模板：" + template);
     this.db.post(template);
   }
 
   updateTemplate(template) {
+    console.log("修改模板：" + template);
     this.db.put(template).catch((err) => {
       console.log(err);
     });
   }
 
   deleteTemplate(template) {
+    console.log("删除模板：" + template);
     this.db.remove(template).catch((err) => {
       console.log(err);
     });

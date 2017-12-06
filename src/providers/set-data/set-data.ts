@@ -15,7 +15,7 @@ export class SetData {
 
   constructor() {
     this.db = new PouchDB('set');
-    this.remote = 'http://localhost:5984/set';
+    this.remote = 'http://45.77.208.33:5984/set';
     let options = {
       live: true,
       retry: true,
@@ -67,16 +67,19 @@ export class SetData {
   }
 
   createSet(set) {
+    console.log("创建set：" + set);
     this.db.post(set);
   }
 
   updateSet(set) {
+    console.log("修改set：" + set);
     this.db.put(set).catch((err) => {
       console.log(err);
     });
   }
 
   deleteSet(set) {
+    console.log("删除set：" + set);
     this.db.remove(set).catch((err) => {
       console.log(err);
     });

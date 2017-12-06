@@ -34,7 +34,6 @@ export class SetPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad SetPage');
   }
 
   doRefresh(refresher) {
@@ -50,7 +49,6 @@ export class SetPage {
   }
 
   reorderSets(indexes) {
-    console.log("reordering...");
     // this.templates = reorderArray(this.templates, indexes);
     let element = this.sets[indexes.from];
     this.sets.splice(indexes.from, 1);

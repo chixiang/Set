@@ -29,11 +29,9 @@ export class AddItemPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AddItemPage');
   }
 
   reorderSelectItems(indexes) {
-    console.log("reordering...");
     // this.templates = reorderArray(this.templates, indexes);
     let element = this.selectItems[indexes.from];
     this.selectItems.splice(indexes.from, 1);

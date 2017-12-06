@@ -34,7 +34,6 @@ export class TemplatePage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad TemplatePage');
   }
 
   doRefresh(refresher) {
@@ -51,7 +50,6 @@ export class TemplatePage {
   }
 
   reorderTemplates(indexes) {
-    console.log("reordering...");
     // this.templates = reorderArray(this.templates, indexes);
     let element = this.templates[indexes.from];
     this.templates.splice(indexes.from, 1);

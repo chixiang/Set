@@ -36,7 +36,6 @@ export class SetDetailPage {
       this.rows = this.set.rows;
       for (var j = 0; j < this.set.rows.length; j++) {
         for (var i = 0; i < this.set.template.items.length; i++) {
-          console.log(this.set.rows[j][this.set.template.items[i].title]);
           this.values.push(this.set.rows[j][this.set.template.items[i].title]);
         }
       }
@@ -48,7 +47,6 @@ export class SetDetailPage {
   }
 
   reorderRows(indexes) {
-    console.log("reordering...");
     // this.templates = reorderArray(this.templates, indexes);
     let element = this.rows[indexes.from];
     this.rows.splice(indexes.from, 1);

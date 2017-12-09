@@ -95,7 +95,7 @@ export class TemplatePage {
   }
 
   deleteTemplate(template) {
-    let isDelete = this.utilsService.doConfirm("", "Delete this template?", () => {
+    this.utilsService.doConfirm("", "Delete this template?", () => {
       this.dataService.deleteTemplate(template);
     },
       () => { });

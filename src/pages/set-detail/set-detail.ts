@@ -75,7 +75,7 @@ export class SetDetailPage {
   }
 
   deleteRow(row) {
-    let isDelete = this.utilsService.doConfirm("", "Delete this row?", () => {
+    this.utilsService.doConfirm("", "Delete this row?", () => {
       let index = this.rows.indexOf(row);
       this.rows = this.rows.slice(0, index).concat(this.rows.slice(index + 1, this.rows.length));
     },

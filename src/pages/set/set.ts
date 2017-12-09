@@ -109,7 +109,7 @@ export class SetPage {
   }
 
   deleteSet(set) {
-    let isDelete = this.utilsService.doConfirm("", "Delete this set?", ()=> {
+    this.utilsService.doConfirm("", "Delete this set?", ()=> {
       this.dataService.deleteSet(set);
     }, 
     ()=>{});

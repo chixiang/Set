@@ -32,7 +32,7 @@ export class EditSetPage {
       this.set = this.navParams.get('set');
       this.title = this.set.title;
       this.description = this.set.description;
-      this.type = this.set.type;
+      this.type = this.set.template.title;
     }
     this.dataService.getTemplates().then((templates) => {
       if (templates && templates.length > 0) {

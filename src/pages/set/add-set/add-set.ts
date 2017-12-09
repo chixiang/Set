@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
-import { TemplateData } from '../../providers/data/data';
+import { TemplateData } from '../../../providers/data/data';
 import { ViewController } from 'ionic-angular/navigation/view-controller';
-import { UtilsService } from '../../services/utils/utils';
+import { UtilsService } from '../../../services/utils/utils';
 import { ModalController } from 'ionic-angular/components/modal/modal-controller';
-import { AddTemplatePage } from '../add-template/add-template';
+import { AddTemplatePage } from '../../template/add-template/add-template';
 
 /**
  * Generated class for the AddSetPage page.

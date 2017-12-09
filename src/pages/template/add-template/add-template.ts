@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController, ModalController, ViewController, NavParams } from 'ionic-angular';
 
-import { AddItemPage } from '../add-item/add-item';
-import { ItemDetailPage } from '../item-detail/item-detail';
+import { AddItemPage } from '../item/add-item/add-item';
+import { ItemDetailPage } from '../item/item-detail/item-detail';
 
-import { UtilsService } from '../../services/utils/utils';
+import { UtilsService } from '../../../services/utils/utils';
 /**
  * Generated class for the AddTemplatePage page.
  *

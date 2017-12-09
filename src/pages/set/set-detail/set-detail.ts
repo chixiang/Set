@@ -3,11 +3,11 @@ import { NavController, NavParams } from 'ionic-angular';
 import { ViewController } from 'ionic-angular/navigation/view-controller';
 import { ModalController } from 'ionic-angular/components/modal/modal-controller';
 
-import { AddRowPage } from '../add-row/add-row';
-import { RowDetailPage } from '../row-detail/row-detail';
+import { AddRowPage } from '../row/add-row/add-row';
+import { RowDetailPage } from '../row/row-detail/row-detail';
 
-import { SetData } from '../../providers/set-data/set-data';
-import { UtilsService } from '../../services/utils/utils';
+import { SetData } from '../../../providers/set-data/set-data';
+import { UtilsService } from '../../../services/utils/utils';
 
 /**
  * Generated class for the SetDetailPage page.

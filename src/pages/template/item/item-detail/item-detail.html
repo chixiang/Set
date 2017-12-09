@@ -26,7 +26,7 @@
     <ion-item>
       <ion-label>Type</ion-label>
       <ion-select [(ngModel)]="type" interface="popover">
-        <ion-option value="string">文字</ion-option>
+        <!-- <ion-option value="string">文字</ion-option>
         <ion-option value="textarea">文字区域</ion-option>
         <ion-option value="number">数字</ion-option>
         <ion-option value="select">列表</ion-option>
@@ -35,7 +35,8 @@
         <ion-option value="email">Email</ion-option>
         <ion-option value="url">网址</ion-option>
         <ion-option value="toggle">开关</ion-option>
-        <ion-option value="password">密码</ion-option>
+        <ion-option value="password">密码</ion-option> -->
+        <ion-option *ngFor="let itemType of itemTypes" value="{{itemType.type}}">{{itemType.title}}</ion-option>
       </ion-select>
     </ion-item>
     <ion-item *ngIf="type == 'number'">

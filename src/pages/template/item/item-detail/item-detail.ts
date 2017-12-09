@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
 import { UtilsService } from '../../../../services/utils/utils';
-
+import { AppConstant } from '../../../../app/app.constant';
+ 
 /**
  * Generated class for the ItemDetailPage page.
  *
@@ -19,6 +20,7 @@ export class ItemDetailPage {
   title;
   type;
   selectItems = [];
+  itemTypes = AppConstant.getItemTypes();
   unit;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public view: ViewController, public utilsService: UtilsService) {

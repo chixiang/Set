@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ModalController } from 'ionic-angular';
 
-import { AddTemplatePage } from '../add-template/add-template';
-import { TemplateDetailPage } from '../template-detail/template-detail';
+import { AddTemplatePage } from '../template/add-template/add-template';
+import { TemplateDetailPage } from '../template/template-detail/template-detail';
 import { TemplateData } from '../../providers/data/data';
 import { UtilsService } from '../../services/utils/utils';
 

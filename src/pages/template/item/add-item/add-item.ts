@@ -1,40 +1,34 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
-import { UtilsService } from '../../services/utils/utils';
+import { UtilsService } from '../../../../services/utils/utils';
 
 /**
- * Generated class for the ItemDetailPage page.
+ * Generated class for the AddItemPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
 
 @Component({
-  selector: 'page-item-detail',
-  templateUrl: 'item-detail.html',
+  selector: 'page-add-item',
+  templateUrl: 'add-item.html',
 })
-export class ItemDetailPage {
+export class AddItemPage {
 
-  item;
-  title;
-  type;
+  title: string;
+  type: string;
   selectItems = [];
+  item;
   unit;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public view: ViewController, public utilsService: UtilsService) {
+    let item = {
+      value: ""
+    }
+    this.selectItems.push(item);
   }
 
   ionViewDidLoad() {
-    if (this.navParams.get('item')) {
-      this.item = this.navParams.get('item');
-      this.title = this.navParams.get('item').title;
-      this.type = this.navParams.get('item').type;
-      //if (this.type == "select") {
-        this.selectItems = this.navParams.get('item').items;
-        this.addNullSelectItem();
-      //}
-      this.unit = this.navParams.get('item').unit;
-    }
   }
 
   reorderSelectItems(indexes) {
@@ -44,7 +38,7 @@ export class ItemDetailPage {
     this.selectItems.splice(indexes.to, 0, element);
   }
 
-  addNullSelectItem() {
+  addNullSelectItem(value) {
     for (var i = 0; i < this.selectItems.length; i++) {
       if (this.selectItems[i].value == "") {
         return;
@@ -67,20 +61,19 @@ export class ItemDetailPage {
       this.utilsService.showToast('top', "Item can not be saved without a type!");
       return;
     }
-    this.item.title = this.title;
-    this.item.type = this.type;
-
-    // 保存前，删除最后一个空列表项
     this.selectItems.pop();
-    this.item.items = this.selectItems;
-    this.item.unit = this.unit;
+    let newItem = {
+      title: this.title,
+      type: this.type,
+      items: this.selectItems,
+      unit: this.unit
+    };
 
-    this.view.dismiss(this.item);
+    this.view.dismiss(newItem);
+
   }
 
   close() {
-    // 关闭前，删除最后一个空列表项
-    this.selectItems.pop();
     this.view.dismiss();
   }
 

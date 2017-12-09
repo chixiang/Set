@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
 import { ModalController } from 'ionic-angular/components/modal/modal-controller';
 
-import { AddItemPage } from '../add-item/add-item';
-import { ItemDetailPage } from '../item-detail/item-detail';
+import { AddItemPage } from '../item/add-item/add-item';
+import { ItemDetailPage } from '../item/item-detail/item-detail';
 
-import { TemplateData } from '../../providers/data/data';
-import { SetData } from '../../providers/set-data/set-data';
-import { UtilsService } from '../../services/utils/utils';
+import { TemplateData } from '../../../providers/data/data';
+import { SetData } from '../../../providers/set-data/set-data';
+import { UtilsService } from '../../../services/utils/utils';
 
 /**
  * Generated class for the TemplateDetailPage page.

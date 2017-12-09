@@ -25,6 +25,7 @@ import { SetData } from '../providers/set-data/set-data';
 
 import { UtilsService } from '../services/utils/utils';
 import { AutosizeDirective } from '../directives/autosize/autosize';
+import { ItemTypeData } from '../providers/item-type-data/item-type-data';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import { AutosizeDirective } from '../directives/autosize/autosize';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     TemplateData,
     SetData,
-    UtilsService
+    UtilsService,
+    ItemTypeData
   ]
 })
 export class AppModule {}

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
 import { UtilsService } from '../../../../services/utils/utils';
+import { ItemTypeData } from '../../../../providers/item-type-data/item-type-data';
 
 /**
  * Generated class for the ItemDetailPage page.
@@ -19,12 +20,18 @@ export class ItemDetailPage {
   title;
   type;
   selectItems = [];
+  itemTypes = [];
   unit;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public view: ViewController, public utilsService: UtilsService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public view: ViewController, public utilsService: UtilsService, public itemTypeDataService: ItemTypeData) {
   }
 
   ionViewDidLoad() {
+    this.itemTypeDataService.getItemTypes().then((itemTypes) => {
+      if (itemTypes) {
+        this.itemTypes = itemTypes;
+      }
+    });
     if (this.navParams.get('item')) {
       this.item = this.navParams.get('item');
       this.title = this.navParams.get('item').title;

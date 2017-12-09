@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
 import { UtilsService } from '../../../../services/utils/utils';
+import { ItemTypeData } from '../../../../providers/item-type-data/item-type-data';
 
 /**
  * Generated class for the AddItemPage page.
@@ -18,10 +19,11 @@ export class AddItemPage {
   title: string;
   type: string;
   selectItems = [];
+  itemTypes = [];
   item;
   unit;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public view: ViewController, public utilsService: UtilsService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public view: ViewController, public utilsService: UtilsService, public itemTypeDataService: ItemTypeData) {
     let item = {
       value: ""
     }
@@ -29,6 +31,11 @@ export class AddItemPage {
   }
 
   ionViewDidLoad() {
+    this.itemTypeDataService.getItemTypes().then((itemTypes) => {
+      if (itemTypes) {
+        this.itemTypes = itemTypes;
+      }
+    });
   }
 
   reorderSelectItems(indexes) {

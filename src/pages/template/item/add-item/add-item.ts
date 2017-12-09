@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
 import { UtilsService } from '../../../../services/utils/utils';
+import { AppConstant } from '../../../../app/app.constant';
 
 /**
  * Generated class for the AddItemPage page.
@@ -18,6 +19,7 @@ export class AddItemPage {
   title: string;
   type: string;
   selectItems = [];
+  itemTypes = AppConstant.getItemTypes();
   item;
   unit;
 

@@ -36,6 +36,10 @@ export class SetPage {
   ionViewDidLoad() {
   }
 
+  ionViewWillEnter() {
+    console.log("Showing the set page!");
+  }
+
   doRefresh(refresher) {
     console.log('Begin async operation', refresher);
     this.dataService.getSets().then((sets) => {
@@ -109,10 +113,10 @@ export class SetPage {
   }
 
   deleteSet(set) {
-    this.utilsService.doConfirm("", "Delete this set?", ()=> {
+    this.utilsService.doConfirm("", "Delete this set?", () => {
       this.dataService.deleteSet(set);
-    }, 
-    ()=>{});
+    },
+      () => { });
   }
 
 }

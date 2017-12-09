@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, ModalController, ViewController, NavParams } from 'ionic-angular';
-
 import { AddItemPage } from '../item/add-item/add-item';
 import { ItemDetailPage } from '../item/item-detail/item-detail';
-
 import { UtilsService } from '../../../services/utils/utils';
+import { AppConstant } from '../../../app/app.constant';
 /**
  * Generated class for the AddTemplatePage page.
  *
@@ -21,6 +20,7 @@ export class AddTemplatePage {
   public title: string;
   public description: string;
   public items = [];
+  itemTypesJson = AppConstant.getItemTypesJson();
 
   constructor(public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams, public view: ViewController, public utilsService: UtilsService) {
   }

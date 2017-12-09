@@ -8,6 +8,7 @@ import { ItemDetailPage } from '../item/item-detail/item-detail';
 import { TemplateData } from '../../../providers/data/data';
 import { SetData } from '../../../providers/set-data/set-data';
 import { UtilsService } from '../../../services/utils/utils';
+import { AppConstant } from '../../../app/app.constant';
 
 /**
  * Generated class for the TemplateDetailPage page.
@@ -26,6 +27,7 @@ export class TemplateDetailPage {
   title;
   description;
   items = [];
+  itemTypesJson = AppConstant.getItemTypesJson();
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public view: ViewController, public modalCtrl: ModalController, public dataService: TemplateData, public utilsService: UtilsService, public setDataService: SetData) {
   }

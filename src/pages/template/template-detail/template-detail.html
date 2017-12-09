@@ -42,7 +42,7 @@
       <ion-item-sliding *ngFor="let item of items">
         <button ion-item (click)="viewItem(item)">
           <h2>{{item.title}}</h2>
-          <p>{{item.type}}</p>
+          <ion-note item-end>{{item.type}}</ion-note>
         </button>
         <ion-item-options>
           <button ion-button color="danger" (click)="deleteItem(item)">

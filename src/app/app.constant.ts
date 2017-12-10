@@ -50,7 +50,7 @@ export class AppConstant {
             "string": "文字",
             "textarea": "文字区域",
             "number": "数字",
-            "select": "列表",
+            "select": "单选列表",
             "date": "日期",
             "time": "时间",
             "email": "Email",

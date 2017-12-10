@@ -67,19 +67,19 @@ export class SetData {
   }
 
   createSet(set) {
-    console.log("创建set：" + set);
+    console.log("创建set：" + JSON.stringify(set));
     this.db.post(set);
   }
 
   updateSet(set) {
-    console.log("修改set：" + set);
+    console.log("修改set：" + JSON.stringify(set));
     this.db.put(set).catch((err) => {
       console.log(err);
     });
   }
 
   deleteSet(set) {
-    console.log("删除set：" + set);
+    console.log("删除set：" + JSON.stringify(set));
     this.db.remove(set).catch((err) => {
       console.log(err);
     });

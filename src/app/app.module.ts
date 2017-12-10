@@ -25,6 +25,9 @@ import { SetData } from '../providers/set-data/set-data';
 
 import { UtilsService } from '../services/utils/utils';
 import { AutosizeDirective } from '../directives/autosize/autosize';
+import { ImagePicker } from '@ionic-native/image-picker';
+import { Camera } from '@ionic-native/camera';
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 
 @NgModule({
   declarations: [
@@ -70,7 +73,10 @@ import { AutosizeDirective } from '../directives/autosize/autosize';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     TemplateData,
     SetData,
-    UtilsService
+    UtilsService,
+    ImagePicker,
+    Camera,
+    FileTransfer
   ]
 })
 export class AppModule {}

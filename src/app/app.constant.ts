@@ -30,6 +30,9 @@ export class AppConstant {
         }, {
             "type": "password",
             "title": "密码"
+        }, {
+            "type": "image",
+            "title": "图片"
         }
         ]
         return itemTypes;
@@ -56,7 +59,8 @@ export class AppConstant {
             "email": "Email",
             "url": "网址",
             "toggle": "开关",
-            "password": "密码"
+            "password": "密码",
+            "image": "图片"
         }
         return itemTypesJson; 
     }

@@ -82,6 +82,15 @@
           <ion-icon range-right name="sunny"></ion-icon>
         </ion-range>
       </ion-item>
+      <ion-card *ngSwitchCase="'image'">
+        <ion-card-header>
+          {{item.title}}
+        </ion-card-header>
+        <img src="{{item.value}}"/>
+        <!-- <ion-card-content>
+          hahaha
+        </ion-card-content> -->
+      </ion-card>
       <ion-item *ngSwitchDefault>
         <!-- Default -->
         <ion-label>{{item.title}}</ion-label>

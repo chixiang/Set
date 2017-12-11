@@ -28,6 +28,7 @@ import { AutosizeDirective } from '../directives/autosize/autosize';
 import { ImagePicker } from '@ionic-native/image-picker';
 import { Camera } from '@ionic-native/camera';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+import { File } from '@ionic-native/file';
 
 @NgModule({
   declarations: [
@@ -76,7 +77,8 @@ import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-nati
     UtilsService,
     ImagePicker,
     Camera,
-    FileTransfer
+    FileTransfer,
+    File
   ]
 })
 export class AppModule {}

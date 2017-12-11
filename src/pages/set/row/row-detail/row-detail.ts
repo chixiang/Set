@@ -4,6 +4,7 @@ import { ActionSheetController } from "ionic-angular";
 import { ImagePicker } from '@ionic-native/image-picker';
 import { Camera } from '@ionic-native/camera';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+import { File } from '@ionic-native/file';
 
 
 /**
@@ -23,39 +24,11 @@ export class RowDetailPage {
   items = [];
   types = [];
   values = [];
+  images = [];
   template;
   fileTransfer: FileTransferObject = this.transfer.create();
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public view: ViewController, private camera: Camera, private imagePicker: ImagePicker, private actionSheetCtrl: ActionSheetController, private transfer: FileTransfer) {
-    // if (this.navParams.get('row')) {
-    //   this.row = this.navParams.get('row');
-    // }
-    // if (this.navParams.get('template')) {
-    //   this.template = this.navParams.get('template');
-    //   for (var i = 0; i < this.template.items.length; i++) {
-    //     if (this.template.items[i].type == "select") {
-    //       this.items[i] = {
-    //         title: this.template.items[i].title,
-    //         type: this.template.items[i].type,
-    //         selectItems: this.template.items[i].items,
-    //         value: this.row[i]
-    //       }
-    //     } else if (this.template.items[i].type == "number") {
-    //       this.items[i] = {
-    //         title: this.template.items[i].title,
-    //         type: this.template.items[i].type,
-    //         value: this.row[i],
-    //         unit: this.template.items[i].unit
-    //       }
-    //     } else {
-    //       this.items[i] = {
-    //         title: this.template.items[i].title,
-    //         type: this.template.items[i].type,
-    //         value: this.row[i]
-    //       }
-    //     }
-    //   }
-    // }
+  constructor(public navCtrl: NavController, public navParams: NavParams, public view: ViewController, private camera: Camera, private imagePicker: ImagePicker, private actionSheetCtrl: ActionSheetController, private transfer: FileTransfer, private file: File) {
   }
 
   ionViewDidLoad() {
@@ -91,37 +64,32 @@ export class RowDetailPage {
   }
 
   saveRow() {
-    // for (var i = 0; i < this.items.length; i++) {
-    //   this.row[i] = this.items[i].value;
-    // }
-    // 实现方式二：使用[]来用变量表示json的key，此方式更简单
     for (var i = 0; i < this.items.length; i++) {
-      this.row[this.items[i].title] = this.items[i].value;
-    }
+        this.row[this.items[i].title] = this.items[i].value;
+      }
     this.view.dismiss(this.values);
   }
 
-  useASComponent() {
+  getImageMethod(item) {
     let actionSheet = this.actionSheetCtrl.create({
       title: '选择',
       buttons: [
         {
           text: '拍照',
           handler: () => {
-            this.startCamera();
+            this.startCamera(item);
           }
         },
         {
           text: '从手机相册选择',
           handler: () => {
-            this.openImgPicker();
+            this.openImgPicker(item);
           }
         },
         {
           text: '取消',
           role: 'cancel',
           handler: () => {
-
           }
         }
       ]
@@ -129,7 +97,7 @@ export class RowDetailPage {
     actionSheet.present();
   }
 
-  startCamera() {
+  startCamera(item) {
     let cameraOpt = {
       quality: 50,
       destinationType: 1, // Camera.DestinationType.FILE_URI,
@@ -147,35 +115,39 @@ export class RowDetailPage {
     });
   }
 
-  openImgPicker() {
+  openImgPicker(item) {
     let imagePickerOpt = {
       maximumImagesCount: 1,
       width: 800,
       height: 800,
       quality: 80
     };
-    console.log("selectImage...");
     this.imagePicker.getPictures(imagePickerOpt).then((results) => {
       for (var i = 0; i < results.length; i++) {
-        console.log('Image URI: ' + results[i]);
-        this.upload(results[0]);
+        var imagePath = results[i].substr(0, results[i].lastIndexOf('/') + 1);
+        var imageName = results[i].substr(results[i].lastIndexOf('/') + 1);
+        this.file.readAsDataURL(imagePath, imageName).then((b64str) => {
+          item.value = b64str;
+        }).catch(err => {
+          console.log('readAsDataURL failed: (' + err.code + ")" + err.message);
+        })
       }
     }, (err) => { });
   }
 
-  upload(filename) {
+  upload(item, filename) {
     let options: FileUploadOptions = {
-       fileKey: 'smfile',
-       headers: {}
+      fileKey: 'smfile',
+      headers: {}
     }
-  
+
     this.fileTransfer.upload(filename, 'https://sm.ms/api/upload', options)
-     .then((data) => {
-       console.log(JSON.stringify(data));
-       this.items[0].value = JSON.parse(data.response).data.url;
-     }, (err) => {
-       console.log("Oh, no!" + err.toString);
-     })
+      .then((data) => {
+        console.log(JSON.stringify(data));
+        item.url = JSON.parse(data.response).data.url;
+      }, (err) => {
+        console.log("Oh, no!" + err.toString);
+      })
   }
 
 }

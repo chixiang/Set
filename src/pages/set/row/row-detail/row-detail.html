@@ -83,7 +83,7 @@
         </ion-range>
       </ion-item>
       <ion-card *ngSwitchCase="'image'">
-        <ion-card-header (click)="useASComponent()">
+        <ion-card-header (click)="getImageMethod(item)">
           {{item.title}}
         </ion-card-header>
         <img src="{{item.value}}" />

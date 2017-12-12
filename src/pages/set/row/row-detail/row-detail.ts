@@ -53,7 +53,7 @@ export class RowDetailPage {
             value: this.row[this.template.items[i].title],
             unit: this.template.items[i].unit
           }
-        } else if (this.template.items[i].type = "image") {
+        } else if (this.template.items[i].type == "image") {
           let id = this.row[this.template.items[i].title];
           let value = "";
           this.imageDataService.getImage(id).then((images) => {

@@ -56,7 +56,7 @@ export class ImageDataProvider {
         this.data = [];
         console.log(result);
         this.data.push(result);
-        resolve(this.data);
+        resolve(this.data[0].b64str);
         this.db.changes({ live: true, since: 'now', include_docs: true }).on('change', (change) => {
           this.handleChange(change);
         });

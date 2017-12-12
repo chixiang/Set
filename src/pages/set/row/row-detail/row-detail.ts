@@ -32,7 +32,7 @@ export class RowDetailPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public view: ViewController, private camera: Camera, private imagePicker: ImagePicker, private actionSheetCtrl: ActionSheetController, private transfer: FileTransfer, private file: File, private imageDataService: ImageDataProvider) {
   }
 
-  ionViewDidLoad() {
+  async ionViewDidLoad() {
     if (this.navParams.get('row')) {
       this.row = this.navParams.get('row');
     }
@@ -55,13 +55,7 @@ export class RowDetailPage {
           }
         } else if (this.template.items[i].type == "image") {
           let id = this.row[this.template.items[i].title];
-          let value = "";
-          this.imageDataService.getImage(id).then((images) => {
-            if (images) {
-              value = JSON.stringify(images[0]);
-            }
-          });
-          console.log("value: " + value)
+          let value = await this.imageDataService.getImage(id);
           this.items[i] = {
             title: this.template.items[i].title,
             type: this.template.items[i].type,
@@ -78,11 +72,21 @@ export class RowDetailPage {
     }
   }
 
-  saveRow() {
-    for (var i = 0; i < this.items.length; i++) {
+  async saveRow() {
+    // for (var i = 0; i < this.items.length; i++) {
+    //     this.row[this.items[i].title] = this.items[i].value;
+    //   }
+    // this.view.dismiss(this.values);
+    for (var i = 0; i < this.template.items.length; i++) {
+      if (this.template.items[i].type != "image") {
         this.row[this.items[i].title] = this.items[i].value;
+      } else {
+        this.row[this.items[i].title] = await this.imageDataService.createImage({
+          "b64str": this.items[i].value
+        })
       }
-    this.view.dismiss(this.values);
+    }
+    this.view.dismiss(this.row);
   }
 
   getImageMethod(item) {

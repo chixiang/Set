@@ -29,6 +29,7 @@ import { ImagePicker } from '@ionic-native/image-picker';
 import { Camera } from '@ionic-native/camera';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
+import { ImageDataProvider } from '../providers/image-data/image-data';
 
 @NgModule({
   declarations: [
@@ -78,7 +79,8 @@ import { File } from '@ionic-native/file';
     ImagePicker,
     Camera,
     FileTransfer,
-    File
+    File,
+    ImageDataProvider
   ]
 })
 export class AppModule {}

@@ -5,6 +5,7 @@ import { ImagePicker } from '@ionic-native/image-picker';
 import { Camera } from '@ionic-native/camera';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
+import { ImageDataProvider } from '../../../../providers/image-data/image-data';
 
 
 /**
@@ -28,7 +29,7 @@ export class RowDetailPage {
   template;
   fileTransfer: FileTransferObject = this.transfer.create();
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public view: ViewController, private camera: Camera, private imagePicker: ImagePicker, private actionSheetCtrl: ActionSheetController, private transfer: FileTransfer, private file: File) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public view: ViewController, private camera: Camera, private imagePicker: ImagePicker, private actionSheetCtrl: ActionSheetController, private transfer: FileTransfer, private file: File, private imageDataService: ImageDataProvider) {
   }
 
   ionViewDidLoad() {
@@ -51,6 +52,20 @@ export class RowDetailPage {
             type: this.template.items[i].type,
             value: this.row[this.template.items[i].title],
             unit: this.template.items[i].unit
+          }
+        } else if (this.template.items[i].type = "image") {
+          let id = this.row[this.template.items[i].title];
+          let value = "";
+          this.imageDataService.getImage(id).then((images) => {
+            if (images) {
+              value = JSON.stringify(images[0]);
+            }
+          });
+          console.log("value: " + value)
+          this.items[i] = {
+            title: this.template.items[i].title,
+            type: this.template.items[i].type,
+            value: value,
           }
         } else {
           this.items[i] = {
